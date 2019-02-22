@@ -13,4 +13,4 @@ def homepage(request):
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
     # args['form'] = UserCreationForm()
-    return render_to_response('startbootstrap-resume-gh-pages.html', args)
+    return render_to_response('landing.html', args)
