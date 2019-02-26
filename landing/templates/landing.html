@@ -1,4 +1,182 @@
 {% load staticfiles %}
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="ThemeStarz">
 
-{% include 'pure-css-drawer.html' %}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600">
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'font-awesome/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/odometer-theme-default.css' %}">
+        <link rel="stylesheet" href="{% static 'css/resume.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <title>Preus</title>
+    {% endblock head %}
+</head>
+
+<body class="has-loading-screen">
+{% block body %}
+    <div class="ts-page-wrapper">
+        <!--Brand Navigation
+        ====================================================================================================================
+        -->
+        <div id="brand-navigation">
+            {% block brand-navigation %}
+                <div class="container">
+
+                    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                        <span class="d-block d-lg-none">Clarence Taylor</span>
+                        <span class="d-none d-lg-block">
+                     <img style="max-height: 160px; max-width: 160px" class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ photo.url }}"  alt="">
+                </span>
+                    </a>
+                </div>
+            {% endblock  %}
+        </div>
+
+        <!--Main Left Navigation
+        ====================================================================================================================
+        -->
+        <div id="main-navigation">
+            {% block main-navigation %}
+                {% include 'navigation.html' %}
+            {% endblock main-navigation %}
+        </div>
+
+        <!--Content
+        ====================================================================================================================
+        -->
+        <div class="ts-content">
+            {% block ts-content %}
+                <!--HERO HEADER
+                ================================================================================================================
+                ================================================================================================================
+                -->
+                <header id="ts-hero" class="ts-height--100vh ts-has-overlay text-white">
+                    {% block ts-hero %}
+                        <div class="container">
+
+                            <h1 data-animate="ts-reveal">
+                    <span class="wrapper">
+                        <span>We Are</span>
+                    </span>
+                                <br>
+                                <span class="wrapper">
+                        <span data-ts-delay=".05s">Preus Interactive</span>
+                    </span>
+                            </h1>
+
+                            <h4 class="mb-0" data-animate="ts-fadeInUp" data-ts-delay=".1s">A digital agency based in London</h4>
+
+                        </div>
+
+                        <div class="ts-background" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                            <div class="ts-img-into-bg ts-background-image ts-parallax-element">
+                                <img src="{% static 'themes/preus/assets/img/bg-office.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    {% endblock ts-hero %}
+                </header>
+
+                <!--MAIN CONTENT
+                ================================================================================================================
+                ================================================================================================================
+                -->
+                <main id="ts-content">
+                    {% block main-content %}
+                        {% include 'main_content.html' %}
+                    {% endblock main-content%}
+                </main>
+                <!--end #content-->
+
+                <!--FOOTER
+                ================================================================================================================
+                ================================================================================================================
+                -->
+                <footer id="ts-footer">
+                    {% block footer %}
+                        <section id="ts-footer-main">
+                            <div class="container">
+
+                                <div class="ts-title">
+                                    <h2>About Us</h2>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-5">
+                                        <p>
+                                            Fusce pretium dui quis est pretium lobortis. Vestibulum eu ex sed nibh condimentum
+                                            tristique eu finibus lorem. Nullam sed eleifend massa. Morbi nulla turpis, pharetra et
+                                            nisl eu, pellentesque molestie erat
+                                        </p>
+                                        <a href="#" class="ts-link ts-underline mb-5 mb-md-0 d-inline-block">More About Us</a>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-4">
+                                        <address class="ts-text-muted---white">
+                                            1565 Broadcast Drive
+                                            <br>
+                                            Dulles, VA 20166
+                                            <br>
+                                            <br>
+                                            <strong>Tel:</strong> +1 703-996-1212
+                                            <br>
+                                            <strong>Email:</strong> <a href="#">hello@example.com</a>
+                                            <br>
+                                            <strong>Skype:</strong> <a href="#">wearepreus</a>
+                                            <br>
+                                        </address>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-3">
+                                        <nav class="nav flex-column">
+                                            <a class="nav-link" href="#">Home</a>
+                                            <a class="nav-link" href="#">About us</a>
+                                            <a class="nav-link" href="#">Portfolio</a>
+                                            <a class="nav-link" href="#">Services</a>
+                                            <a class="nav-link" href="#">Contact</a>
+                                        </nav>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <section>
+                            <div class="container py-5">
+                                <small>© 2019 All Rights Reserved</small>
+                            </div>
+                        </section>
+                    {% endblock footer %}
+                </footer>
+                <!--end #footer-->
+            {% endblock ts-content %}
+        </div>
+        <!--end page-->
+
+    </div>
+
+    {% block scripts %}
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/isInViewport.jquery.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/scrolla.jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'js/jquery-validate.bootstrap-tooltip.min.js' %}"></script>
+        <script src="{% static 'js/odometer.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/particles.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+    {% endblock scripts %}
+
+{% endblock body %}
+</body>
+</html>
