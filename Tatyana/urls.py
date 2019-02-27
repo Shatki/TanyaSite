@@ -17,13 +17,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-import personal.views as landing
+import website.views as pages
 import ckeditor
 import users.views as users
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'ckeditor/', include('ckeditor_uploader.urls')),
-    path('', landing.homepage),
+    path('', pages.homepage),
     # path('users/<username>/photo/', users.get_photo),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

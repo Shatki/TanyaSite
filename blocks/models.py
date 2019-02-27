@@ -12,6 +12,7 @@ class Content(models.Model):
         verbose_name = 'загружаемый контент'
         verbose_name_plural = 'загружаемый контент'
         db_table = 'content'
+
     TEXT = 'text'
     PIC = 'pic'
     VIDEO = 'VIDEO'
@@ -42,9 +43,6 @@ class Content(models.Model):
         return self.file
 
 
-
-
-
 class Block(models.Model):
     class Meta:
         verbose_name = 'блок сайта'
@@ -53,7 +51,7 @@ class Block(models.Model):
 
     name = models.CharField(max_length=30, verbose_name='наименование блока')
     item = models.ManyToManyField(Content, verbose_name=u'изображение',
-                                   #through='ContentTable',
-                                   #through_fields=('content', 'item'),
-                                   related_name='block_items'
-                                   )
+                                  # through='ContentTable',
+                                  # through_fields=('content', 'item'),
+                                  related_name='block_items'
+                                  )
