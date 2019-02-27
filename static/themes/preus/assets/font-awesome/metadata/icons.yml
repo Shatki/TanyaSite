@@ -11933,7 +11933,7 @@ plane-arrival:
       - destination
       - fly
       - land
-      - landing
+      - personal
       - location
       - mode
       - travel

@@ -2317,7 +2317,7 @@ body.has-loading-screen:before {
 }
 
 body.has-loading-screen:after {
-    content: url("../../assets/img/loading.svg");
+    content: url("svg/loading.svg");
     height: 2.5rem;
     width: 2.5rem;
     position: fixed;
@@ -2435,6 +2435,12 @@ body.has-loading-screen.loading-done #brand-navigation {
             transform: translateX(-100%);
     width: 100%;
 }
+
+#sideNav .navbar-brand .img-profile {
+  max-width:7rem;
+  max-height:7rem;
+  border:.4rem solid rgba(255,255,255,.2)
+ }
 
 #main-navigation .navbar {
     /*align-items: flex-start;*/
@@ -3080,8 +3086,8 @@ h1 a.ts-underline {
     }
 
     #brand-navigation {
-        left: 5.375rem;
-        width: calc(100% - 5.375rem);
+        left: 8.375rem;
+        width: calc(100% - 8.375rem);
         background-color: transparent;
     }
 
@@ -3097,14 +3103,14 @@ h1 a.ts-underline {
 
     #main-navigation .navbar {
         align-items: center;
-        width: 5.375rem;
+        width: 8.375rem;
         padding-top: 0;
     }
 
     .ts-content {
         position: relative;
-        left: 5.375rem;
-        width: calc(100% - 5.375rem);
+        left: 8.375rem;
+        width: calc(100% - 8.375rem);
         transition: .5s cubic-bezier(.77, 0, .18, 1);
         -webkit-transform: translateX(0);
                 transform: translateX(0);
@@ -3116,6 +3122,7 @@ h1 a.ts-underline {
     }
 
     body.nav-hovered #main-navigation .navbar {
-        width: 25rem;
+        width: 20rem;
     }
 }
+

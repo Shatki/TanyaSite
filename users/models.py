@@ -2,7 +2,7 @@ from django.db import models
 from django.core.mail import send_mail
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 from Tatyana.validators import alpha_all, login, email
-from Tatyana.settings import PROFILE_PHOTOS_DIR
+from Tatyana.settings import PROFILE_PHOTOS_DIR, PROFILE_PHOTO_DEFAULT_NAME
 
 
 # Класс менеджера должен переопределить методы create_user() и create_superuser().
@@ -51,7 +51,7 @@ class User(AbstractUser):
     last_name = models.CharField(verbose_name=u'фамилия пользователя', max_length=40, blank=True, null=True)
 
     photo = models.ImageField(upload_to=PROFILE_PHOTOS_DIR, verbose_name=u'фото', blank=True, null=True,
-                              default='profileimage.jpg')
+                              default=PROFILE_PHOTO_DEFAULT_NAME)
     # Атрибут суперпользователя
     is_admin = models.BooleanField(default=False, null=False)
 

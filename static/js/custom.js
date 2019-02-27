@@ -11,7 +11,7 @@ $(function() {
     var $navigation = $mainNavigation.find(".navbar-nav");
 
     $navigation.find("> .nav-item > .nav-link").each(function (e) {
-        var text = $(this).text().replace(/\s/g, '');
+        var text = $(this).text();  //.replace(/\s/g, '');
         var firstLetter = text.substring(0,1);
         var hiddenLetters = text.substring(1);
 
@@ -73,25 +73,6 @@ $(function() {
 
             if( $("[data-bg-color]") ){
                 $this.find(".ts-background").css("background-color", $this.attr("data-bg-color") );
-            }
-
-            // Particles
-
-            if( $this.attr("data-bg-particles-line-color") || $this.attr("data-bg-particles-dot-color") ){
-                $this.find(".ts-background").append('<div class="ts-background-particles">');
-                $(".ts-background-particles").each(function () {
-                    var lineColor = $this.attr("data-bg-particles-line-color");
-                    var dotColor = $this.attr("data-bg-particles-dot-color");
-                    var parallax = $this.attr("data-bg-particles-parallax");
-                    $(this).particleground({
-                        density: 15000,
-                        lineWidth: 0.2,
-                        lineColor: lineColor,
-                        dotColor: dotColor,
-                        parallax: parallax,
-                        proximity: 200
-                    });
-                });
             }
 
             // Background Image

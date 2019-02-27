@@ -17,7 +17,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-import landing.views as landing
+import personal.views as landing
 import ckeditor
 import users.views as users
 

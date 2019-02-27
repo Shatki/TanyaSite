@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'landing',
+    'personal',
     'users',
     'documents',
     'website',
@@ -125,7 +125,9 @@ STATIC_URL = '/static/'
 DOCUMENT_URL = '/documents/'
 MEDIA_URL = '/media/'
 
+CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
+CONTENT_PIC_DEFAULT_NAME = 'image.jpg'
 PROFILE_PHOTO_DEFAULT_NAME = 'profileimage.jpg'
 
 STATICFILES_FINDERS = (
