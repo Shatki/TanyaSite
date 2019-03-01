@@ -36,10 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    # 'personal',
+    'website',
+    'personal',
+    'gallery',
     'users',
     'documents',
-    'website',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,7 @@ MEDIA_URL = '/media/'
 
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
+GALLERY_PHOTOS_DIR = 'gallery/'
 CONTENT_PIC_DEFAULT_NAME = 'image.jpg'
 PROFILE_PHOTO_DEFAULT_NAME = 'profileimage.jpg'
 

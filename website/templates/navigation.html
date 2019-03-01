@@ -1,42 +1,43 @@
 {% load staticfiles %}
 
 {% block main-navigation %}
-    <nav class="navbar navbar-dark" id="sideNav">
-        <a class="navbar-brand" href="#page-top">
-            <span class="d-block d-lg-none">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ photo.url }}"  alt="">
-            </span>
-            <span class="d-none d-lg-block">
-                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ photo.url }}"  alt="">
-            </span>
-        </a>
-        <ul class="navbar-nav">
-            <!--Home
-         ========================================================================================================
-         -->
+    <div id="main-navigation">
+        <nav class="navbar navbar-dark" id="sideNav">
+            <a class="navbar-brand" href="#page-top">
+                <span class="d-block d-lg-none">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ photo.url }}"  alt="">
+                </span>
 
-            {% for menu in menus %}
-                <li class="nav-item">
-                    {% if menu.menu == menu_default %}
-                        <a class="nav-link active" href="#collapse__home" data-toggle="collapse" role="button">{{ menu.name }}</a>
-                    {% else %}
-                        <a class="nav-link" href="#collapse__home" data-toggle="collapse" role="button">{{ menu.name }}</a>
-                    {% endif %}
-
-                    <div class="collapse" id="collapse__home">
-                        <ul class="nav flex-column">
-                            {% for choice in menu.choices %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ choice.href }}">{{ choice.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-
-    </nav>
-
-
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ photo.url }}"  alt="">
+                </span>
+            </a>
+            <ul class="navbar-nav">
+                {% for menu in menus %}
+                    <!--{{ menu.menu }}
+                ========================================================================================================
+                -->
+                    <li class="nav-item">
+                        <a
+                                {% if menu.menu == menu_default %}
+                                    class="nav-link active"
+                                {% else %}
+                                    class="nav-link"
+                                {% endif %}
+                                    href="#collapse__{{ menu.menu }}" data-toggle="collapse" role="button">{{ menu.name }}
+                        </a>
+                        <div class="collapse" id="collapse__{{ menu.menu }}">
+                            <ul class="nav flex-column">
+                                {% for choice in menu.choices %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ choice.url }}">{{ choice.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
 {% endblock main-navigation %}

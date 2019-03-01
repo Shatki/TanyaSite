@@ -3,9 +3,8 @@ from .models import Menu
 
 
 # Register your models here.
-
 @admin.register(Menu)
-class UserAdmin(admin.ModelAdmin):
+class MenuAdmin(admin.ModelAdmin):
     list_display = ('menu',
                     'name',
                     'url',

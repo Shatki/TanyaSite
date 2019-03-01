@@ -27,52 +27,37 @@
         <!--Main Left Navigation
         ====================================================================================================================
         -->
-        <div id="main-navigation">
-            {% block main-navigation %}
-                {% include 'navigation.html' %}
-            {% endblock main-navigation %}
-        </div>
-
+        {% block main-navigation %}
+        {% endblock main-navigation %}
         <!--Content
         ====================================================================================================================
         -->
-        <div class="ts-content">
-            {% block ts-content %}
+        {% block ts-content %}
+            <div class="ts-content">
                 <!--HERO HEADER
                 ================================================================================================================
                 ================================================================================================================
                 -->
-                <header id="ts-hero" class="ts-height--100vh ts-has-overlay text-white">
-                    {% block ts-hero %}
-                        {% include 'heroheader.html' %}
-                    {% endblock ts-hero %}
-                </header>
-
+                {% block ts-hero %}
+                {% endblock ts-hero %}
                 <!--MAIN CONTENT
                 ================================================================================================================
                 ================================================================================================================
                 -->
-                <main id="ts-content">
-                    {% block main-content %}
-                        {% include 'main_content.html' %}
-                    {% endblock main-content%}
-                </main>
+                {% block main-content %}
+                {% endblock main-content%}
                 <!--end #content-->
 
                 <!--FOOTER
                 ================================================================================================================
                 ================================================================================================================
                 -->
-                <footer id="ts-footer">
-                    {% block footer %}
-                        {% include 'footer.html' %}
-                    {% endblock footer %}
-                </footer>
+                {% block footer %}
+                {% endblock footer %}
                 <!--end #footer-->
-            {% endblock ts-content %}
-        </div>
-        <!--end page-->
-
+            </div>
+            <!--end page-->
+        {% endblock ts-content %}
     </div>
 
     {% block scripts %}

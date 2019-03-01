@@ -1,8 +1,8 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
 from django.contrib import auth
 from .models import Menu
-from .constants import MENU_CHOICES, MENU_DEFAULT
+from Tatyana.constants import MENU_CHOICES, MENU_DEFAULT
 
 
 # Create your views here.
@@ -11,6 +11,7 @@ def homepage(request):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
+    print(args['photo'])
     menus = Menu.objects.all()
     _menu = []
     for menu in MENU_CHOICES:
@@ -21,7 +22,7 @@ def homepage(request):
                 # print(submenu.name)
                 _choice = dict(
                     name=submenu.name,
-                    href=submenu.url
+                    url=submenu.url
                 )
                 collect.append(_choice)
         elem = dict(
@@ -36,4 +37,4 @@ def homepage(request):
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
     # args['form'] = UserCreationForm()
-    return render_to_response('index.html', args)
+    return render_to_response('homepage.html', args)
