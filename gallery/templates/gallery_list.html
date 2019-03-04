@@ -1,9 +1,10 @@
 {% extends 'index.html' %}
-{%  load staticfiles %}
 
 {% block main-navigation %}
     {% include 'navigation.html' %}
 {% endblock main-navigation %}
+
+{%  load staticfiles %}
 
 <!--Content
   ====================================================================================================================
@@ -45,7 +46,6 @@
                         {% if rows == 'odd' %}
                             <div class="row ts-gallery">
                         {% endif %}
-
                     <!---->
                     <div class="col-md-6">
                         <div class="ts-group">
@@ -63,29 +63,12 @@
                     </div>
                     <!--end gallery item-->
 
-                    {% if rows == 'even' %}
+                    {% if rows == 'even' or forloop.last %}
                         <!--end row-->
                         </div>
                     {% endif %}
                     {% endfor %}
-
-                    <div class="col-md-6">
-                        <div class="ts-group">
-                            <a href="portfolio__detail--default.html" class="card ts-gallery__item mb-3">
-                                <div class="ts-background ts-img-into-bg">
-                                    <img src="assets/img/img__work--02.jpg" alt="">
-                                </div>
-                            </a>
-                            <div class="ts-gallery__item-description">
-                                <h5 class="mb-0">
-                                    <a href="#">Museum of Art Identity</a>
-                                </h5>
-                                <small class="ts-opacity__50">Identity</small>
-                            </div>
-                        </div>
-                    </div>
                     <!--end gallery item-->
-
                 </div>
             </section>
 
@@ -144,14 +127,14 @@
                     </div>
 
                     <div class="ts-background ts-background-repeat ts-img-into-bg ts-opacity__50">
-                        <img src="assets/img/bg__pattern--dot--white.png" alt="">
+                        <img src="/static/themes/preus/assets/img/bg__pattern--dot--white.png" alt="">
                     </div>
 
                 </section>
 
                 <section>
                     <div class="container py-5">
-                        <small>© 2019 All Rights Reserved</small>
+                        <small>© 2019 Все права защищены</small>
                     </div>
                 </section>
 

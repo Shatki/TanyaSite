@@ -218,11 +218,11 @@ $(function() {
     $(".ts-form-email .btn[type='submit']").on("click", function(e){
         var $button = $(this);
         var $form = $(this).closest("form");
-        var pathToPhp = $(this).closest("form").attr("data-php-path");
+        var path = $(this).closest("form").attr("data-path");
         $form.validate({
             submitHandler: function() {
                 $button.addClass("processing");
-                $.post( pathToPhp, $form.serialize(),  function(response) {
+                $.post(path, $form.serialize(),  function(response) {
                     $button.addClass("done").find(".status").append(response).prop("disabled", true);
                 });
                 return false;
@@ -232,6 +232,46 @@ $(function() {
 
     $("form:not(.ts-form-email)").each(function(){
         $(this).validate();
+    });
+
+
+    $("#form-news-reply-submit").on("click", function(e){
+        let valid = true;
+        $('input.form-control.form-reply').each(function (i, elem) {
+            let $this = $(elem);
+            if ($this.hasClass("error")) {
+                valid = false;
+                return false;
+            }
+            if (!$this.hasClass("valid")) {
+                valid = false;
+                return false;
+            }
+        });
+        if(valid){
+            let $button = $(this);
+            let $form = $button.closest("form");
+            // let path = $button.closest("form").attr("data-path");
+            //alert($form.find('.error').attr('name'));
+            $.ajax({
+                url: 'comment/',
+                method: 'POST',
+                data: $form.serialize(),
+                cache: false,
+                success: function (data) {
+                    if (data === true) {
+                        // Пока кокой-то деревянный способ
+                        //location.href = "#";
+                        $form.get(0).reset();
+                        //location.reload();
+                    } else {
+                        alert('Ошибка отправки комментария');
+                    }
+                }
+            });
+            // Иначе никак
+            return false;
+        }
     });
 
     $(".progress").each(function(){
@@ -254,9 +294,7 @@ $(function() {
             });
         });
     }
-
-
-// On RESIZE actions
+    // On RESIZE actions
 
     $(window).on("resize", function(){
         clearTimeout(resizeId);

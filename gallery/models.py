@@ -32,18 +32,18 @@ class Photo(models.Model):
         return self.photo
 
 
-
 class Album(models.Model):
     class Meta:
         verbose_name = 'альбом'
         verbose_name_plural = 'альбомы'
         db_table = 'albums'
 
-    name = models.CharField(max_length=50, verbose_name='наименование альбома(рус)')
-    directory = models.CharField(max_length=200, verbose_name=u"псевдоним альбома(англ)")
+    name = models.CharField(max_length=50, verbose_name='наименование альбома(рус)', unique=True)
+    description = models.CharField(max_length=50, verbose_name='описание альбома(не обязательно)', null=True, blank=True)
+    directory = models.CharField(max_length=200, verbose_name=u"псевдоним альбома(англ)", unique=True)
 
     def __str__(self):
-        return self.name
+        return self.directory
 
     def url(self):
         # return '%s/' % self.directory  # ВРЕМЕННО

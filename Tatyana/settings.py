@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'gallery',
     'users',
     'documents',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +112,7 @@ AUTHENTICATION_BACKENDS = (
 
 LANGUAGE_CODE = 'ru-Ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -129,8 +130,10 @@ MEDIA_URL = '/media/'
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
 GALLERY_PHOTOS_DIR = 'gallery/'
+NEWS_PHOTOS_DIR = 'news/'
 CONTENT_PIC_DEFAULT_NAME = 'image.jpg'
 PROFILE_PHOTO_DEFAULT_NAME = 'profileimage.jpg'
+NO_PHOTO = STATIC_URL + 'img/nophoto.png'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

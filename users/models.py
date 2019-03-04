@@ -74,7 +74,7 @@ class User(AbstractUser):
         return self.photo
 
     def get_full_name(self):
-        return ' '.join([self.first_name, self.last_name])
+        return '%s %s' % (self.first_name, self.last_name)
 
     def get_short_name(self):
         return self.first_name
