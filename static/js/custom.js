@@ -274,6 +274,33 @@ $(function() {
         }
     });
 
+    $(".link-reply").on("click", function(e){
+        let $button = $(this);
+        let $div = $button.closest("div");
+        let news_id = $div.attr('id');
+        let target_id = '#form-reply-' + news_id;
+        let $target = $(target_id);
+        //$target.show();
+        $("#leave-reply").appendTo($target);
+        $('#form-news-cancel-reply-to').show();
+
+        return false;
+    });
+
+    $("#form-news-cancel-reply-to").on("click", function(e){
+        let $button = $(this);
+        let $section = $button.closest("section");
+        let $target = $('#reply-form-common');
+        $section.appendTo($target);
+        $('#form-news-cancel-reply-to').hide();
+        return false;
+    });
+
+    // Отключение видимости дополнительных кнопок
+    $('.btn-outline-primary').hide();
+
+
+
     $(".progress").each(function(){
         var $this = $(this);
         $this.find(".ts-progress-value").text( $this.attr("data-progress-width") );
@@ -286,7 +313,7 @@ $(function() {
     });
 
     if( $(".ts-gallery__masonry").length ){
-        var container = $(".ts-masonry");
+        let container = $(".ts-masonry");
         container.imagesLoaded( function() {
             container.masonry({
                 gutter: 15,
