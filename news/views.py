@@ -4,6 +4,8 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from .models import News, Comment
 from Tatyana.settings import NO_PHOTO
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -31,14 +33,6 @@ def comment(request, news_id):
 
 
 @csrf_protect
-def news_list(request):
-    args = {}
-    args.update(csrf(request))
-    args['result'] = True
-    return render_to_response('news__list.html', args)
-
-
-@csrf_protect
 def news_detail(request, news_id):
     args = {}
     args.update(csrf(request))
@@ -56,3 +50,26 @@ def news_detail(request, news_id):
 
     args['comments'] = _comments
     return render_to_response('news__detail.html', args)
+
+
+@csrf_protect
+def news_list(request):
+    args = {}
+    args.update(csrf(request))
+    args['result'] = True
+    news = News.objects.all()
+    paginator = Paginator(news, 1)
+
+    page = request.GET.get('page')
+    try:
+        news_list = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        news_list = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        news_list = paginator.page(paginator.num_pages)
+
+    # print(photos)
+    args['news_list'] = news_list
+    return render_to_response('news__list.html', args)
