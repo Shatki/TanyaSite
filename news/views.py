@@ -12,16 +12,20 @@ from django.template.context_processors import csrf
 @csrf_protect
 def comment(request, news_id):
     response = True
-    #try:
-    news = Comment.objects.create(
-        author=request.POST['form-news-reply-name'],
-        email=request.POST['form-news-reply-email'],
-        news_id=news_id,
-        message=request.POST['form-news-reply-message'],
-    )
-    news.save()
-    #except:
-    #    response = False
+    try:
+        news = Comment.objects.create(
+            author=request.POST['form-news-reply-name'],
+            email=request.POST['form-news-reply-email'],
+            news_id=news_id,
+            message='<p>%s</p>' % request.POST['form-news-reply-message'],
+        )
+        try:
+            news.reply_id = request.POST['form-news-reply-comment']
+        except:
+            news.reply_id = None
+        news.save()
+    except:
+        response = False
 
     return JsonResponse(response, safe=False)
 
@@ -43,5 +47,12 @@ def news_detail(request, news_id):
     news = News.objects.get(id=news_id)
     # print(photos)
     args['news'] = news
-    args['comments'] = Comment.objects.filter(news_id=news_id, allowed=True)
+    _comments = Comment.objects.filter(news_id=news_id, allowed=True)
+    # добавка чтобы реплика была адресно
+    for _comment in _comments:
+        if _comment.reply:
+            _comment.message = "%s<a href='#%s'>%s</a>, %s" \
+                               % (_comment.message[:3], _comment.reply.id, _comment.reply.author, _comment.message[3:])
+
+    args['comments'] = _comments
     return render_to_response('news__detail.html', args)

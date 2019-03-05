@@ -235,6 +235,8 @@ $(function() {
     });
 
 
+    // News
+
     $("#form-news-reply-submit").on("click", function(e){
         let valid = true;
         $('input.form-control.form-reply').each(function (i, elem) {
@@ -260,28 +262,29 @@ $(function() {
                 cache: false,
                 success: function (data) {
                     if (data === true) {
-                        // Пока кокой-то деревянный способ
-                        //location.href = "#";
-                        $form.get(0).reset();
-                        //location.reload();
+                        // Чистка формы
+                        //$form.get(0).reset();
+                        return false;
                     } else {
-                        alert('Ошибка отправки комментария');
+                        alert('Ошибка отправки комментария!');
                     }
                 }
             });
             // Иначе никак
-            return false;
         }
     });
 
     $(".link-reply").on("click", function(e){
         let $button = $(this);
         let $div = $button.closest("div");
-        let news_id = $div.attr('id');
-        let target_id = '#form-reply-' + news_id;
+        let comment_id = $div.attr('id');
+        let target_id = '#form-reply-' + comment_id;
         let $target = $(target_id);
         //$target.show();
         $("#leave-reply").appendTo($target);
+        // answer on comment #
+        $('#form-news-reply-comment').attr("value", comment_id);
+        $('#leave-reply-header-text').hide();
         $('#form-news-cancel-reply-to').show();
 
         return false;
@@ -292,14 +295,15 @@ $(function() {
         let $section = $button.closest("section");
         let $target = $('#reply-form-common');
         $section.appendTo($target);
+        $('#form-news-reply-comment').attr("value", "");
+        $('#leave-reply-header-text').show();
         $('#form-news-cancel-reply-to').hide();
         return false;
     });
 
-    // Отключение видимости дополнительных кнопок
-    $('.btn-outline-primary').hide();
+    $('.btn-outline-primary').hide(); // Отключение видимости дополнительных кнопок
 
-
+    // Other
 
     $(".progress").each(function(){
         var $this = $(this);
