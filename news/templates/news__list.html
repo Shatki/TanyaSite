@@ -56,11 +56,32 @@
                             <div class="text-center">
                                 <nav class="d-inline-block">
                                     <ul class="pagination">
+
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                                    {% if news_list.has_previous %}
+                                                        href="?page={{ news_list.previous_page_number }}
+                                                    {% endif %}">Назад</a>
+                                        </li>
+
+
+
                                         {% for page in news_list.paginator.page_range %}
                                             <li class="page-item{% if page == news_list.number %} active{% endif %}">
                                                 <a class="page-link" href="?page={{ page }}">{{ page }}</a>
                                             </li>
                                         {% endfor %}
+
+
+
+
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                                    {% if news_list.has_next %}
+                                               href="?page={{ news_list.next_page_number }}
+                                                    {% endif %}">Вперед</a>
+                                        </li>
+
                                     </ul>
                                 </nav>
                             </div>

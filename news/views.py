@@ -70,6 +70,8 @@ def news_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         news_list = paginator.page(paginator.num_pages)
 
+    
+
     # print(photos)
     args['news_list'] = news_list
     return render_to_response('news__list.html', args)
