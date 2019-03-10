@@ -1,5 +1,5 @@
 from django.db import models
-from Tatyana.constants import MENU_CHOICES, MENU_DEFAULT
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT
 
 
 # Create your models here.

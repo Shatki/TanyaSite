@@ -175,3 +175,24 @@ CKEDITOR_CONFIGS = {
         ],
     }
 }
+
+
+# Корневое меню
+ABOUT = 'about'
+GROUP = 'group'
+DOCS = 'docs'
+NEWS = 'news'
+CONTACTS = 'contacts'
+
+MENU_DEFAULT = ABOUT
+
+MENU_CHOICES = (
+    (ABOUT, 'обо мне'),
+    (GROUP, 'наша группа'),
+    (DOCS, 'документы'),
+    (NEWS, 'новости'),
+    (CONTACTS, 'контакты'),
+)
+
+PAGINATION_NEWS_ON_PAGE = 1     # Количество новостей на странице
+PAGINATION_LIST_COUNT = 5       # Число страниц отопбажаемых в строке пагинация между "Назад" и "Вперед"

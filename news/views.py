@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from .models import News, Comment
-from Tatyana.settings import NO_PHOTO
+from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_COUNT
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -58,7 +58,7 @@ def news_list(request):
     args.update(csrf(request))
     args['result'] = True
     news = News.objects.all()
-    paginator = Paginator(news, 1)
+    paginator = Paginator(news, PAGINATION_NEWS_ON_PAGE)
 
     page = request.GET.get('page')
     try:
@@ -70,7 +70,10 @@ def news_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         news_list = paginator.page(paginator.num_pages)
 
-    
+    args['pagination_list'] = PAGINATION_LIST_COUNT
+    print(int(PAGINATION_LIST_COUNT / 2) + 1)
+
+
 
     # print(photos)
     args['news_list'] = news_list

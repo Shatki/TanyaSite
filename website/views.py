@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
 from django.contrib import auth
 from .models import Menu
-from Tatyana.constants import MENU_CHOICES, MENU_DEFAULT
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT
 
 
 def menu():
