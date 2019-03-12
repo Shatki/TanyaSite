@@ -41,8 +41,8 @@
                                     <div class="bg-transfer"><img src="{{ news.photo.url }}" alt=""></div>
                                 </a>
                                 <figure class="meta">
-                                    <a href="#" class="link-icon"><i class="fa fa-user"></i>{{ news.author.get_full_name }}</a>
-                                    <a href="#" class="link-icon"><i class="fa fa-calendar"></i>{{ news.date }}</a>
+                                    <a href="#" class="link-icon"><i class="fa fa-user"></i> {{ news.author.get_full_name }}</a>
+                                    <a href="#" class="link-icon"><i class="fa fa-calendar"></i> {{ news.date }}</a>
                                 </figure>
                                 {% autoescape off %}
                                     {{ news.text }}

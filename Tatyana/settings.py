@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'website',
-    'personal',
     'gallery',
     'users',
     'documents',
@@ -124,16 +123,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-DOCUMENT_URL = '/documents/'
 MEDIA_URL = '/media/'
 
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
 GALLERY_PHOTOS_DIR = 'gallery/'
 NEWS_PHOTOS_DIR = 'news/'
-CONTENT_PIC_DEFAULT_NAME = 'image.jpg'
-PROFILE_PHOTO_DEFAULT_NAME = 'profileimage.jpg'
-NO_PHOTO = STATIC_URL + 'img/nophoto.png'
+DOCUMENTS_PDF_DIR = 'documents/'
+DOCUMENTS_MINIATURES_DIR = 'miniatures/'
+
+CONTENT_PIC_DEFAULT_NAME = CONTENT_PICS_DIR + 'image.jpg'
+PROFILE_PHOTO_DEFAULT_NAME = PROFILE_PHOTOS_DIR + 'profileimage.jpg'
+NO_PHOTO = PROFILE_PHOTOS_DIR + 'nophoto.png'
+DOCUMENT_PDF_MINIATURE = DOCUMENTS_MINIATURES_DIR + 'pdf.png'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -176,7 +178,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-
 # Корневое меню
 ABOUT = 'about'
 GROUP = 'group'
@@ -194,5 +195,5 @@ MENU_CHOICES = (
     (CONTACTS, 'контакты'),
 )
 
-PAGINATION_NEWS_ON_PAGE = 1     # Количество новостей на странице
-PAGINATION_LIST_COUNT = 5       # Число страниц отопбажаемых в строке пагинация между "Назад" и "Вперед"
+PAGINATION_NEWS_ON_PAGE = 3  # Количество новостей на странице
+PAGINATION_LIST_RANGE = 3  # Число страниц отопбажаемых в строке пагинация между "Назад" и "Вперед"

@@ -41,8 +41,8 @@
                                 </a>
                                 <header><a href="{{ news.id  }}/"><h2>{{ news.title }}</h2></a></header>
                                 <figure class="meta">
-                                    <a href="#" class="link-icon"><i class="fa fa-user"></i>{{ news.author.get_full_name }}</a>
-                                    <a href="#" class="link-icon"><i class="fa fa-calendar"></i>{{ news.date }}</a>
+                                    <a href="#" class="link-icon"><i class="fa fa-user"></i> {{ news.author.get_full_name }}</a>
+                                    <a href="#" class="link-icon"><i class="fa fa-calendar"></i> {{ news.date }}</a>
                                 </figure>
                                 {% autoescape off %}
                                     {{ news.text | truncatechars_html:400 }}
@@ -66,7 +66,7 @@
 
 
 
-                                        {% for page in news_list.paginator.page_range %}
+                                        {% for page in news_list.list_range %}
                                             <li class="page-item{% if page == news_list.number %} active{% endif %}">
                                                 <a class="page-link" href="?page={{ page }}">{{ page }}</a>
                                             </li>
