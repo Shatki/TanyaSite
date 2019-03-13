@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
-from Tatyana.settings import DOCUMENTS_PDF_DIR, DOCUMENTS_MINIATURES_DIR
+from Tatyana.settings import DOCUMENTS_PDF_DIR, DOCUMENTS_MINIATURES_DIR, MEDIA_URL
+from website.models import Menu
 
 
 # Create your models here.
@@ -20,7 +21,13 @@ class Document(models.Model):
     allowed = models.BooleanField(verbose_name=u'разрешение на публикацию', default=False)
     doc = models.FileField(upload_to=DOCUMENTS_PDF_DIR, verbose_name=u'документ')
     miniature = models.ImageField(upload_to=DOCUMENTS_MINIATURES_DIR, verbose_name=u'миниатюра документа',
-                                  name='photo', blank=True, default=DOCUMENTS_PDF_DIR + "pdf.png")
+                                  name='preview', blank=True, default=DOCUMENTS_PDF_DIR + "pdf.png")
+    page = models.ForeignKey(Menu, verbose_name=u'размещение документа',
+                             on_delete=models.CASCADE, blank=False, null=False)
 
     def __str__(self):
         return '%s %s' % (self.added, self.author)
+
+    def preview(self):
+        # return '%s/' % self.directory  # ВРЕМЕННО
+        return self.miniature

@@ -2,7 +2,8 @@ from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
 from django.contrib import auth
 from .models import Menu
-from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT
+from documents.models import Document
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, TEMPLATE_NO_PAGE
 
 
 def menu():
@@ -16,7 +17,7 @@ def menu():
                 # print(submenu.name)
                 _choice = dict(
                     name=submenu.name,
-                    url=submenu.url
+                    url=submenu.get_url()
                 )
                 collect.append(_choice)
         elem = dict(
@@ -41,4 +42,19 @@ def homepage(request):
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
     # args['form'] = UserCreationForm()
-    return render_to_response('homepage.html', args)
+    return render_to_response(TEMPLATE_PAGE_DEFAULT, args)
+
+
+def documents_dispatch(request, url):
+    args = {}
+    args.update(csrf(request))
+    args['username'] = auth.get_user(request).username
+    template = TEMPLATE_DOCUMENTS
+    try:
+        args['page'] = Menu.objects.get(url=url)
+        args['documents'] = Document.objects.filter(page__url=url, allowed=True)
+    except:
+        template = TEMPLATE_NO_PAGE
+    # Вызов конструктор страниц
+
+    return render_to_response(template, args)

@@ -1,15 +1,15 @@
 from django.db import models
-from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, TEMPLATE_NO_PAGE
 
 
 # Create your models here.
 class Menu(models.Model):
     class Meta:
-        verbose_name = 'пункт меню'
-        verbose_name_plural = 'пункты меню'
+        verbose_name = 'страница меню'
+        verbose_name_plural = 'страницы меню'
         db_table = 'menus'
 
-    name = models.CharField(max_length=50, verbose_name='наименование пункта меню')
+    name = models.CharField(max_length=50, verbose_name='наименование страницы меню')
     menu = models.CharField(verbose_name=u"корневое меню", default=MENU_DEFAULT,
                             max_length=20, blank=False, choices=MENU_CHOICES)
     url = models.CharField(max_length=200, verbose_name=u"гиперссылка на страницу")
@@ -20,8 +20,8 @@ class Menu(models.Model):
     def get_type(self):
         return self.menu
 
-    def get_file(self):
-        return self.url
+    def get_url(self):
+        return "%s/%s/" % (self.menu, self.url)
 
 
 class Section(models.Model):
@@ -29,6 +29,7 @@ class Section(models.Model):
         verbose_name = "секция"
         verbose_name_plural = 'секции'
         db_table = 'sections'
+
     name = models.CharField(verbose_name=u'наименование секции', max_length=30, unique=True, db_index=True)
     # section_id = models.CharField(verbose_name=u'id секции', max_length=30, unique=True, db_index=True)
     # section_content = RichTextField(verbose_name=u'HTML контент', max_length=5000)

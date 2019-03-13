@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Menu
-from .models import Section
+from .models import Menu, Section
 
 
 # Register your models here.

@@ -178,12 +178,16 @@ CKEDITOR_CONFIGS = {
     }
 }
 
+PAGINATION_NEWS_ON_PAGE = 3  # Количество новостей на странице
+PAGINATION_LIST_RANGE = 3  # Число страниц отопбажаемых в строке пагинация между "Назад" и "Вперед"
+
 # Корневое меню
 ABOUT = 'about'
 GROUP = 'group'
-DOCS = 'docs'
+DOCS = 'documents'
 NEWS = 'news'
 CONTACTS = 'contacts'
+AWARDS = 'awards'
 
 MENU_DEFAULT = ABOUT
 
@@ -193,7 +197,13 @@ MENU_CHOICES = (
     (DOCS, 'документы'),
     (NEWS, 'новости'),
     (CONTACTS, 'контакты'),
+    (AWARDS, 'награды'),
 )
 
-PAGINATION_NEWS_ON_PAGE = 3  # Количество новостей на странице
-PAGINATION_LIST_RANGE = 3  # Число страниц отопбажаемых в строке пагинация между "Назад" и "Вперед"
+# Виды шаблонов страниц
+TEMPLATE_PAGE_DEFAULT = 'about.html'
+TEMPLATE_DOCUMENTS = 'documents.html'
+TEMPLATE_AWARDS = 'awards.html'
+TEMPLATE_NO_PAGE = '404.html'
+
+

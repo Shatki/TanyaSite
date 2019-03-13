@@ -212,11 +212,11 @@ B. Helpers
 [data-animate] {
     opacity: 0;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
     -webkit-animation-duration: .8s;
-            animation-duration: .8s;
+    animation-duration: .8s;
     -webkit-animation-timing-function: cubic-bezier(.67, .01, .08, .99);
-            animation-timing-function: cubic-bezier(.67, .01, .08, .99);
+    animation-timing-function: cubic-bezier(.67, .01, .08, .99);
 }
 
 /* Fade In Up */
@@ -225,13 +225,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 1.25rem, 0);
-                transform: translate3d(0, 1.25rem, 0);
+        transform: translate3d(0, 1.25rem, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -239,19 +239,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 1.25rem, 0);
-                transform: translate3d(0, 1.25rem, 0);
+        transform: translate3d(0, 1.25rem, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .ts-fadeInUp {
     -webkit-animation-name: ts-fadeInUp;
-            animation-name: ts-fadeInUp;
+    animation-name: ts-fadeInUp;
 }
 
 /* Fade In Down */
@@ -260,13 +260,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, -1.25rem, 0);
-                transform: translate3d(0, -1.25rem, 0);
+        transform: translate3d(0, -1.25rem, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -274,19 +274,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, -1.25rem, 0);
-                transform: translate3d(0, -1.25rem, 0);
+        transform: translate3d(0, -1.25rem, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .ts-fadeInDown {
     -webkit-animation-name: ts-fadeInDown;
-            animation-name: ts-fadeInDown;
+    animation-name: ts-fadeInDown;
 }
 
 /* Fade In Left */
@@ -295,13 +295,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(-1.25rem, 0, 0);
-                transform: translate3d(-1.25rem, 0, 0);
+        transform: translate3d(-1.25rem, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -309,19 +309,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(-1.25rem, 0, 0);
-                transform: translate3d(-1.25rem, 0, 0);
+        transform: translate3d(-1.25rem, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .ts-fadeInLeft {
     -webkit-animation-name: ts-fadeInLeft;
-            animation-name: ts-fadeInLeft;
+    animation-name: ts-fadeInLeft;
 }
 
 /* Fade In Right */
@@ -330,13 +330,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(1.25rem, 0, 0);
-                transform: translate3d(1.25rem, 0, 0);
+        transform: translate3d(1.25rem, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -344,19 +344,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: translate3d(1.25rem, 0, 0);
-                transform: translate3d(1.25rem, 0, 0);
+        transform: translate3d(1.25rem, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .ts-fadeInRight {
     -webkit-animation-name: ts-fadeInRight;
-            animation-name: ts-fadeInRight;
+    animation-name: ts-fadeInRight;
 }
 
 /* Zoom In */
@@ -365,13 +365,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.5);
-                transform: scale(.5);
+        transform: scale(.5);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -379,19 +379,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.5);
-                transform: scale(.5);
+        transform: scale(.5);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
 .ts-zoomIn {
     -webkit-animation-name: ts-zoomIn;
-            animation-name: ts-zoomIn;
+    animation-name: ts-zoomIn;
 }
 
 /* Zoom Out In */
@@ -400,13 +400,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(1.1);
-                transform: scale(1.1);
+        transform: scale(1.1);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -414,19 +414,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(1.1);
-                transform: scale(1.1);
+        transform: scale(1.1);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
 .ts-zoomOutIn {
     -webkit-animation-name: ts-zoomOutIn;
-            animation-name: ts-zoomOutIn;
+    animation-name: ts-zoomOutIn;
 }
 
 /* Zoom In Short */
@@ -435,13 +435,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.9);
-                transform: scale(.9);
+        transform: scale(.9);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -449,19 +449,19 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.9);
-                transform: scale(.9);
+        transform: scale(.9);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
 .ts-zoomInShort {
     -webkit-animation-name: ts-zoomInShort;
-            animation-name: ts-zoomInShort;
+    animation-name: ts-zoomInShort;
 }
 
 /* Reveal */
@@ -470,13 +470,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.9);
-                transform: scale(.9);
+        transform: scale(.9);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -484,13 +484,13 @@ B. Helpers
     from {
         opacity: 0;
         -webkit-transform: scale(.9);
-                transform: scale(.9);
+        transform: scale(.9);
     }
 
     to {
         opacity: 1;
         -webkit-transform: scale(1);
-                transform: scale(1);
+        transform: scale(1);
     }
 }
 
@@ -500,7 +500,7 @@ B. Helpers
 
 [data-animate="ts-reveal"].animated .wrapper span {
     -webkit-transform: translateY(0%);
-            transform: translateY(0%);
+    transform: translateY(0%);
 }
 
 [data-animate="ts-reveal"] .wrapper {
@@ -514,9 +514,9 @@ B. Helpers
     transition: -webkit-transform .8s cubic-bezier(.67, .01, .08, .99);
     transition: transform .8s cubic-bezier(.67, .01, .08, .99);
     transition: transform .8s cubic-bezier(.67, .01, .08, .99),
-                -webkit-transform .8s cubic-bezier(.67, .01, .08, .99);
+    -webkit-transform .8s cubic-bezier(.67, .01, .08, .99);
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
 }
 
 /* -- Align */
@@ -602,17 +602,17 @@ B. Helpers
 
 .ts-column-count-2 {
     -webkit-column-count: 2;
-            column-count: 2;
+    column-count: 2;
 }
 
 .ts-column-count-3 {
     -webkit-column-count: 3;
-            column-count: 3;
+    column-count: 3;
 }
 
 .ts-column-count-4 {
     -webkit-column-count: 4;
-            column-count: 4;
+    column-count: 4;
 }
 
 /*-------------------------------------------
@@ -1003,17 +1003,17 @@ B. Helpers
 
 .ts-push-left__100 {
     -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
 }
 
 .ts-push-down__50 {
     -webkit-transform: translateY(50%);
-            transform: translateY(50%);
+    transform: translateY(50%);
 }
 
 .ts-push-up__50 {
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 /*-------------------------------------------
@@ -1198,14 +1198,14 @@ p {
 
 .ts-flip-x {
     -webkit-transform: scaleY(-1);
-            transform: scaleY(-1);
+    transform: scaleY(-1);
 }
 
 /* Flip Y */
 
 .ts-flip-y {
     -webkit-transform: scaleX(-1);
-            transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .ts-has-talk-arrow {
@@ -1425,7 +1425,7 @@ blockquote h2 {
 .ts-blog-thumb .ts-blog-image:hover:after {
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
 }
 
 .ts-blog-thumb .ts-blog-image:after {
@@ -1445,7 +1445,7 @@ blockquote h2 {
     opacity: 0;
     transition: .3s ease;
     -webkit-transform: scale(1.1);
-            transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .ts-blog-thumb .ts-blog-image .ts-background-image {
@@ -1606,7 +1606,7 @@ blockquote h2 {
 
 .btn:hover .fa-arrow-right {
     -webkit-transform: translateX(.5rem);
-            transform: translateX(.5rem);
+    transform: translateX(.5rem);
 }
 
 .btn.btn-sm {
@@ -1657,7 +1657,7 @@ blockquote h2 {
     transition: .3s ease;
     z-index: 1;
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
 }
 
 .btn .status .status-icon.valid {
@@ -1682,7 +1682,7 @@ blockquote h2 {
 
 .btn.done .status-icon {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     opacity: 1;
 }
 
@@ -1695,17 +1695,17 @@ blockquote h2 {
 
 .ts-btn-effect:hover .ts-hidden {
     -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    transform: translateX(0%);
 }
 
 .ts-btn-effect:hover .ts-visible {
     -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
 }
 
 .ts-btn-effect .ts-visible {
     -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    transform: translateX(0%);
     transition: .3s ease;
 }
 
@@ -1714,7 +1714,7 @@ blockquote h2 {
     top: 0;
     left: 0;
     -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    transform: translateX(-100%);
     transition: .3s ease;
 }
 
@@ -1791,13 +1791,13 @@ blockquote h2 {
 
 .ts-link-arrow-effect:before {
     -webkit-animation: ts-link-arrow-effect-animation-out;
-            animation: ts-link-arrow-effect-animation-out;
+    animation: ts-link-arrow-effect-animation-out;
     -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
     -webkit-animation-duration: .4s;
-            animation-duration: .4s;
+    animation-duration: .4s;
     -webkit-animation-timing-function: cubic-bezier(.6, .01, 0, 1);
-            animation-timing-function: cubic-bezier(.6, .01, 0, 1);
+    animation-timing-function: cubic-bezier(.6, .01, 0, 1);
     background-color: #000;
     bottom: 0;
     height: .125rem;
@@ -1808,16 +1808,16 @@ blockquote h2 {
     top: 0;
     width: 100%;
     -webkit-transform: scaleX(.2);
-            transform: scaleX(.2);
+    transform: scaleX(.2);
     -webkit-transform-origin: left center;
-             transform-origin: left center;
+    transform-origin: left center;
     z-index: -1;
 }
 
 .ts-link-arrow-effect span {
     position: relative;
     -webkit-transform: translateX(-200%);
-            transform: translateX(-200%);
+    transform: translateX(-200%);
     display: inline-block;
     transition: .6s cubic-bezier(.6, .01, 0, 1);
 }
@@ -1825,112 +1825,112 @@ blockquote h2 {
 @-webkit-keyframes ts-link-arrow-effect-animation-in {
     0% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 
     70% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(1);
-                transform: scaleX(1);
+        transform: scaleX(1);
     }
 
     71% {
         -webkit-transform-origin: right center;
-                transform-origin: right center;
+        transform-origin: right center;
     }
 
     100% {
         -webkit-transform-origin: right center;
-                 transform-origin: right center;
+        transform-origin: right center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 }
 
 @keyframes ts-link-arrow-effect-animation-in {
     0% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 
     70% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(1);
-                transform: scaleX(1);
+        transform: scaleX(1);
     }
 
     71% {
         -webkit-transform-origin: right center;
-                transform-origin: right center;
+        transform-origin: right center;
     }
 
     100% {
         -webkit-transform-origin: right center;
-                 transform-origin: right center;
+        transform-origin: right center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 }
 
 @-webkit-keyframes ts-link-arrow-effect-animation-out {
     0% {
         -webkit-transform-origin: right center;
-                 transform-origin: right center;
+        transform-origin: right center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 
     70% {
         -webkit-transform-origin: right center;
-                transform-origin: right center;
+        transform-origin: right center;
     }
 
     71% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(1);
-                transform: scaleX(1);
+        transform: scaleX(1);
     }
 
     100% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 }
 
 @keyframes ts-link-arrow-effect-animation-out {
     0% {
         -webkit-transform-origin: right center;
-                 transform-origin: right center;
+        transform-origin: right center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 
     70% {
         -webkit-transform-origin: right center;
-                transform-origin: right center;
+        transform-origin: right center;
     }
 
     71% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(1);
-                transform: scaleX(1);
+        transform: scaleX(1);
     }
 
     100% {
         -webkit-transform-origin: left center;
-                 transform-origin: left center;
+        transform-origin: left center;
         -webkit-transform: scaleX(.2);
-                transform: scaleX(.2);
+        transform: scaleX(.2);
     }
 }
 
@@ -1940,7 +1940,7 @@ blockquote h2 {
 
 .card {
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    backface-visibility: hidden;
     border: none;
     box-shadow: .125rem .1875rem .9375rem rgba(0, 0, 0, .15);
     overflow: hidden;
@@ -2154,7 +2154,7 @@ form label, .ts-form label {
 
 .ts-gallery__item:hover .ts-background {
     -webkit-transform: scale(1.1) rotate(.01deg);
-            transform: scale(1.1) rotate(.01deg);
+    transform: scale(1.1) rotate(.01deg);
 }
 
 .ts-gallery__item.ts-half {
@@ -2180,9 +2180,9 @@ form label, .ts-form label {
 
 .ts-gallery__item .ts-background {
     -webkit-transform: scale(1) rotate(.01deg);
-            transform: scale(1) rotate(.01deg);
+    transform: scale(1) rotate(.01deg);
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    backface-visibility: hidden;
     transition: .8s ease;
     z-index: 0;
 }
@@ -2327,7 +2327,7 @@ body.has-loading-screen:after {
     right: 0;
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     transition: 1.5s ease;
     top: 0;
     z-index: 10000;
@@ -2348,7 +2348,7 @@ body.has-loading-screen.loading-done:before {
 
 body.has-loading-screen.loading-done:after {
     -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
     opacity: 0;
 }
 
@@ -2432,15 +2432,15 @@ body.has-loading-screen.loading-done #brand-navigation {
     display: flex;
     align-items: center;
     -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    transform: translateX(-100%);
     width: 100%;
 }
 
 #sideNav .navbar-brand .img-profile {
-  max-width:7rem;
-  max-height:7rem;
-  border:.4rem solid rgba(255,255,255,.2)
- }
+    max-width:7rem;
+    max-height:7rem;
+    border:.4rem solid rgba(255,255,255,.2)
+}
 
 #main-navigation .navbar {
     /*align-items: flex-start;*/
@@ -2556,7 +2556,7 @@ body.has-loading-screen.loading-done #brand-navigation {
     display: inline-block;
     opacity: 0;
     -webkit-transform: translateX(.375rem);
-            transform: translateX(.375rem);
+    transform: translateX(.375rem);
     visibility: hidden;
     width: 100%;
 }
@@ -2576,7 +2576,7 @@ body.has-loading-screen.loading-done #brand-navigation {
     transition: -webkit-transform .5s cubic-bezier(.77, 0, .18, 1);
     transition: transform .5s cubic-bezier(.77, 0, .18, 1);
     transition: transform .5s cubic-bezier(.77, 0, .18, 1),
-                -webkit-transform .5s cubic-bezier(.77, 0, .18, 1);
+    -webkit-transform .5s cubic-bezier(.77, 0, .18, 1);
     z-index: 1000;
     background-color: #000;
     left: 0;
@@ -2616,12 +2616,12 @@ body.has-loading-screen.loading-done #brand-navigation {
 
 body.nav-hovered .ts-content {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
 }
 
 body.nav-hovered #main-navigation {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
 }
 
 body.nav-hovered #main-navigation .navbar {
@@ -2631,7 +2631,7 @@ body.nav-hovered #main-navigation .navbar {
 body.nav-hovered #main-navigation .navbar .ts-hidden {
     opacity: 1;
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
     visibility: visible;
 }
 
@@ -2690,7 +2690,7 @@ body.nav-hovered #main-navigation .navbar-toggler {
     position: absolute;
     left: 0%;
     -webkit-transform: translateX(-1rem);
-            transform: translateX(-1rem);
+    transform: translateX(-1rem);
 }
 
 .progress .ts-progress-value:after {
@@ -2799,7 +2799,7 @@ body.nav-hovered #main-navigation .navbar-toggler {
 
 .ts-slider.owl-carousel .owl-dots {
     -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
+    transform: translateY(-100%);
 }
 
 .ts-slider.owl-carousel .owl-dots .owl-dot.active span {
@@ -2988,95 +2988,95 @@ h1 a.ts-underline {
 @media (min-width: 75rem) {
     .ts-column-count-xl-1 {
         -webkit-column-count: 1;
-                column-count: 1;
+        column-count: 1;
     }
 
     .ts-column-count-xl-2 {
         -webkit-column-count: 2;
-                column-count: 2;
+        column-count: 2;
     }
 
     .ts-column-count-xl-3 {
         -webkit-column-count: 3;
-                column-count: 3;
+        column-count: 3;
     }
 
     .ts-column-count-xl-4 {
         -webkit-column-count: 4;
-                column-count: 4;
+        column-count: 4;
     }
 }
 
 @media (min-width: 62rem) and (max-width: 74.9375rem) {
     .ts-column-count-lg-1 {
         -webkit-column-count: 1;
-                column-count: 1;
+        column-count: 1;
     }
 
     .ts-column-count-lg-2 {
         -webkit-column-count: 2;
-                column-count: 2;
+        column-count: 2;
     }
 
     .ts-column-count-lg-3 {
         -webkit-column-count: 3;
-                column-count: 3;
+        column-count: 3;
     }
 
     .ts-column-count-lg-4 {
         -webkit-column-count: 4;
-                column-count: 4;
+        column-count: 4;
     }
 }
 
 @media (min-width: 48rem) and (max-width: 61.9375rem) {
     .ts-column-count-md-1 {
         -webkit-column-count: 1;
-                column-count: 1;
+        column-count: 1;
     }
 
     .ts-column-count-md-2 {
         -webkit-column-count: 2;
-                column-count: 2;
+        column-count: 2;
     }
 
     .ts-column-count-md-3 {
         -webkit-column-count: 3;
-                column-count: 3;
+        column-count: 3;
     }
 
     .ts-column-count-md-4 {
         -webkit-column-count: 4;
-                column-count: 4;
+        column-count: 4;
     }
 }
 
 @media (min-width: 36rem) and (max-width: 47.9375rem) {
     .ts-column-count-sm-1 {
         -webkit-column-count: 1;
-                column-count: 1;
+        column-count: 1;
     }
 
     .ts-column-count-sm-2 {
         -webkit-column-count: 2;
-                column-count: 2;
+        column-count: 2;
     }
 
     .ts-column-count-sm-3 {
         -webkit-column-count: 3;
-                column-count: 3;
+        column-count: 3;
     }
 
     .ts-column-count-sm-4 {
         -webkit-column-count: 4;
-                column-count: 4;
+        column-count: 4;
     }
 }
 
 @media (max-width: 35.9375rem) {
     [class*="ts-column-count-"] {
         -webkit-column-count: 1;
-                column-count: 1;
+        column-count: 1;
     }
 }
 
@@ -3097,7 +3097,7 @@ h1 a.ts-underline {
 
     #main-navigation {
         -webkit-transform: translateX(0);
-                transform: translateX(0);
+        transform: translateX(0);
         width: auto;
     }
 
@@ -3113,12 +3113,12 @@ h1 a.ts-underline {
         width: calc(100% - 8.375rem);
         transition: .5s cubic-bezier(.77, 0, .18, 1);
         -webkit-transform: translateX(0);
-                transform: translateX(0);
+        transform: translateX(0);
     }
 
     body.nav-hovered .ts-content, body.nav-hovered #brand-navigation {
         -webkit-transform: translateX(4rem);
-                transform: translateX(4rem);
+        transform: translateX(4rem);
     }
 
     body.nav-hovered #main-navigation .navbar {
@@ -3126,3 +3126,46 @@ h1 a.ts-underline {
     }
 }
 
+
+/***********************************************************************************************************************
+F. 3D document flip
+***********************************************************************************************************************/
+
+/* Visit https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js for an explanation */
+
+/* for demo purposes */
+.card {
+  margin: 10px 10px;
+}
+
+/* Flip Cards CSS */
+.card-container {
+  display: grid;
+  perspective: 700px;
+}
+
+.card-flip {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  grid-template-areas: "frontAndBack";
+  transform-style: preserve-3d;
+  transition: all 0.7s ease;
+}
+
+.card-flip div {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.front {
+  grid-area: frontAndBack;
+}
+
+.back {
+  grid-area: frontAndBack;
+  transform: rotateY(-180deg);
+}
+
+.card-container:hover .card-flip {
+  transform: rotateY(180deg);
+}
