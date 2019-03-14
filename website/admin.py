@@ -15,8 +15,8 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-@admin.register(Section)
-class SectionAdmin(admin.ModelAdmin):
-    fields = ('name',)
-    search_fields = ('name',)
-    list_display = ('name',)
+#@admin.register(Section)
+#class SectionAdmin(admin.ModelAdmin):
+#    fields = ('name',)
+#    search_fields = ('name',)
+#    list_display = ('name',)

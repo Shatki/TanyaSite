@@ -21,6 +21,8 @@ class Menu(models.Model):
         return self.menu
 
     def get_url(self):
+        if self.url[0] == "#":
+            return "%s/%s" % (self.menu, self.url)
         return "%s/%s/" % (self.menu, self.url)
 
 

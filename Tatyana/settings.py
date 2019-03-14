@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users',
     'documents',
     'news',
+    'experience',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,7 @@ MEDIA_URL = '/media/'
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
 GALLERY_PHOTOS_DIR = 'gallery/'
+AWARDS_PHOTOS_DIR = 'awards/'
 NEWS_PHOTOS_DIR = 'news/'
 DOCUMENTS_PDF_DIR = 'documents/'
 DOCUMENTS_MINIATURES_DIR = 'miniatures/'
@@ -187,18 +189,35 @@ GROUP = 'group'
 DOCS = 'documents'
 NEWS = 'news'
 CONTACTS = 'contacts'
-AWARDS = 'awards'
+GALLERY = 'gallery'
 
 MENU_DEFAULT = ABOUT
 
 MENU_CHOICES = (
     (ABOUT, 'обо мне'),
-    (GROUP, 'наша группа'),
-    (DOCS, 'документы'),
+    (GROUP, 'группа'),
     (NEWS, 'новости'),
+    (GALLERY, 'фотогаллерея'),
+    (DOCS, 'документы'),
     (CONTACTS, 'контакты'),
-    (AWARDS, 'награды'),
 )
+
+# Награды
+GRATEFUL = 'grateful'
+LETTER = 'letter'
+DIPLOM = 'diplom'
+QUALIFICATION = 'qualification'
+CERTIFICATE = 'certificate'
+
+AWARDS_CHOICES = (
+    (GRATEFUL, 'благодарность'),
+    (LETTER, 'грамота'),
+    (DIPLOM, 'диплом'),
+    (QUALIFICATION, 'удостоверение'),
+    (CERTIFICATE, 'сертификат'),
+)
+
+
 
 # Виды шаблонов страниц
 TEMPLATE_PAGE_DEFAULT = 'about.html'

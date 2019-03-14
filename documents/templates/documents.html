@@ -47,25 +47,26 @@
                                 <div class="col-md-4 card-container">
                                     <div class="card-flip">
                                         <!-- Document Front -->
-                                        <div class="card front">
-                                            <img src="/{{ document.preview }}" class="card-img-top img-fluid">
+                                        <div class="card front card-doc">
+                                            <img src="{{ document.preview.url }}" class="card-img-top img-fluid">
                                             <div class="card-block">
-                                                <h4 class="card-title">Front Card Title</h4>
-                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                <h4 class="card-title">{{ document.title }}</h4>
+                                                <p class="card-text">{{ document.description }}</p>
+                                                <p class="card-text"><small class="text-muted">Добавлен: {{ document.added|timesince }} назад</small></p>
                                             </div>
                                         </div>
                                         <!-- End Document Front -->
 
                                         <!-- Document Back -->
-                                        <div class="card back">
+                                        <div class="card back card-doc">
                                             <div class="card-header">
-                                                Featured
+                                                Действия над фалом PDF
                                             </div>
                                             <div class="card-block">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                <h4 class="card-title">{{ document.title }}</h4>
+                                                <p class="card-text">Нажмите 'Просмотр', чтобы ознакомиться с документом или 'Скачать', для загрузки файла на ваш компьютер</p>
+                                                <a href="{{ document.doc.url }}" class="btn btn-primary btn-card view-pdf">Просмотр</a>
+                                                <a href="{{ document.doc.url }}" class="btn btn-primary btn-card download-pdf">Скачать</a>
                                             </div>
                                         </div>
                                         <!-- End document Back -->
@@ -87,62 +88,9 @@
         ================================================================================================================
         ================================================================================================================
         -->
-        <footer id="ts-footer">
-            <section id="ts-footer-main">
-                <div class="container">
-
-                    <div class="ts-title">
-                        <h2>About Us</h2>
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-md-5">
-                            <p>
-                                Fusce pretium dui quis est pretium lobortis. Vestibulum eu ex sed nibh condimentum
-                                tristique eu finibus lorem. Nullam sed eleifend massa. Morbi nulla turpis, pharetra et
-                                nisl eu, pellentesque molestie erat
-                            </p>
-                            <a href="#" class="ts-link ts-underline mb-5 mb-md-0 d-inline-block">More About Us</a>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <address class="ts-text-muted---white">
-                                1565 Broadcast Drive
-                                <br>
-                                Dulles, VA 20166
-                                <br>
-                                <br>
-                                <strong>Tel:</strong> +1 703-996-1212
-                                <br>
-                                <strong>Email:</strong> <a href="#">hello@example.com</a>
-                                <br>
-                                <strong>Skype:</strong> <a href="#">wearepreus</a>
-                                <br>
-                            </address>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3">
-                            <nav class="nav flex-column">
-                                <a class="nav-link" href="#">Home</a>
-                                <a class="nav-link" href="#">About us</a>
-                                <a class="nav-link" href="#">Portfolio</a>
-                                <a class="nav-link" href="#">Services</a>
-                                <a class="nav-link" href="#">Contact</a>
-                            </nav>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="container py-5">
-                    <small>© 2019 All Rights Reserved</small>
-                </div>
-            </section>
-
-        </footer>
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock footer %}
         <!--end #footer-->
 
     </div>

@@ -2,8 +2,10 @@ from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
 from django.contrib import auth
 from .models import Menu
+from experience.models import Course
 from documents.models import Document
-from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, TEMPLATE_NO_PAGE
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, \
+    TEMPLATE_NO_PAGE
 
 
 def menu():
@@ -30,7 +32,7 @@ def menu():
 
 
 # Create your views here.
-def homepage(request):
+def about(request):
     args = {}
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
@@ -38,6 +40,8 @@ def homepage(request):
     # print(args['photo'])
     args['menus'] = menu()
     args['menu_default'] = MENU_DEFAULT
+
+    args['courses'] = Course.objects.all().order_by('begin_date')
 
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
@@ -49,10 +53,18 @@ def documents_dispatch(request, url):
     args = {}
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
+    args['photo'] = auth.get_user(request).photo
+    args['menus'] = menu()
+    args['menu_default'] = MENU_DEFAULT
     template = TEMPLATE_DOCUMENTS
+    args['page'] = ""
+    args['documents'] = ""
+
     try:
-        args['page'] = Menu.objects.get(url=url)
-        args['documents'] = Document.objects.filter(page__url=url, allowed=True)
+        page = Menu.objects.get(url=url)
+        docs = Document.objects.filter(page__url=url, allowed=True).order_by('-added')
+        args['page'] = page
+        args['documents'] = docs
     except:
         template = TEMPLATE_NO_PAGE
     # Вызов конструктор страниц

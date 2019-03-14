@@ -3,9 +3,9 @@ from django.http import JsonResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from .models import News, Comment
-from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_RANGE
+from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_RANGE, MENU_DEFAULT
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from website.views import menu
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -36,6 +36,10 @@ def comment(request, news_id):
 def news_detail(request, news_id):
     args = {}
     args.update(csrf(request))
+    args['username'] = auth.get_user(request).username
+    args['photo'] = auth.get_user(request).photo
+    args['menus'] = menu()
+    args['menu_default'] = MENU_DEFAULT
     args['result'] = True
 
     news = News.objects.get(id=news_id)
@@ -56,6 +60,10 @@ def news_detail(request, news_id):
 def news_list(request):
     args = {}
     args.update(csrf(request))
+    args['username'] = auth.get_user(request).username
+    args['photo'] = auth.get_user(request).photo
+    args['menus'] = menu()
+    args['menu_default'] = MENU_DEFAULT
     args['result'] = True
     news = News.objects.all()
     paginator = Paginator(news, PAGINATION_NEWS_ON_PAGE)

@@ -1,7 +1,8 @@
 from django.contrib import auth
 from django.shortcuts import render_to_response
 from .models import Album, Photo
-from Tatyana.settings import NO_PHOTO
+from Tatyana.settings import NO_PHOTO, MENU_DEFAULT
+from website.views import menu
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -10,9 +11,11 @@ from django.template.context_processors import csrf
 def gallery_list(request):
     args = {}
     args.update(csrf(request))
-    args['result'] = 'Ok'
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
+    args['menus'] = menu()
+    args['menu_default'] = MENU_DEFAULT
+    args['result'] = True
     albums = []
     for _object in Album.objects.all():
         try:
@@ -38,7 +41,11 @@ def gallery_list(request):
 def gallery_detail(request, directory):
     args = {}
     args.update(csrf(request))
-    args['result'] = 'Ok'
+    args['username'] = auth.get_user(request).username
+    args['photo'] = auth.get_user(request).photo
+    args['menus'] = menu()
+    args['menu_default'] = MENU_DEFAULT
+    args['result'] = True
     try:
         album = Album.objects.get(directory=directory)
         photos = Photo.objects.filter(album=album)

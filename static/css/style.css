@@ -3134,38 +3134,72 @@ F. 3D document flip
 /* Visit https://nicolaskadis.info/projects/pure-css-flip-cards-using-bootstrap-4-and-css-grid-no-js for an explanation */
 
 /* for demo purposes */
-.card {
-  margin: 10px 10px;
+.card-doc {
+    margin: 20px 10px;
 }
 
 /* Flip Cards CSS */
 .card-container {
-  display: grid;
-  perspective: 700px;
+    display: grid;
+    perspective: 700px;
 }
 
 .card-flip {
-  display: grid;
-  grid-template: 1fr / 1fr;
-  grid-template-areas: "frontAndBack";
-  transform-style: preserve-3d;
-  transition: all 0.7s ease;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    grid-template-areas: "frontAndBack";
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
 }
 
 .card-flip div {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
 }
 
 .front {
-  grid-area: frontAndBack;
+    grid-area: frontAndBack;
 }
 
 .back {
-  grid-area: frontAndBack;
-  transform: rotateY(-180deg);
+    grid-area: frontAndBack;
+    transform: rotateY(-180deg);
+}
+
+.card-block{
+    padding: 10px;
+}
+
+.btn-card{
+    margin: 10px;
 }
 
 .card-container:hover .card-flip {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+/***********************************************************************************************************************
+G. document preview modal
+***********************************************************************************************************************/
+
+
+.iframe-container {
+    padding-bottom: 60%;
+    width: 800px;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.iframe-container iframe,
+.iframe-container object,
+.iframe-container embed{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal.in .modal-dialog {
+    transform: none; /*translate(0px, 0px);*/
 }

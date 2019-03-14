@@ -17,15 +17,18 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from experience.views import awards
 import website.views as pages
 from gallery.views import gallery_list, gallery_detail
 from news.views import news_list, news_detail, comment
-import ckeditor
-import users.views as users
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'ckeditor/', include('ckeditor_uploader.urls')),
+    path('about/', pages.about),
+    path('about/awards/', awards),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('gallery/', gallery_list),
     path('gallery/<directory>/', gallery_detail),
     path('news/', news_list),
@@ -34,6 +37,7 @@ urlpatterns = [
 
 
     path('documents/<url>/', pages.documents_dispatch),
-    path('', pages.homepage),
+    path('', pages.about),
     # path('users/<username>/photo/', users.get_photo),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+              + staticfiles_urlpatterns()

@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+
+{% block main-navigation %}
+    {% include 'navigation.html' %}
+{% endblock main-navigation %}
+
+{%  load staticfiles %}
+
+<!--Content
+  ====================================================================================================================
+  -->
+{% block ts-content %}
+    <div class="ts-content" data-bg-color="#0c0c0c">
+        <!--HERO HEADER
+        ================================================================================================================
+        ================================================================================================================
+        -->
+        <header id="ts-hero" class="ts-block text-white pb-0">
+            <div class="container">
+                <h1 data-animate="ts-reveal">
+                    <span class="wrapper">
+                        <span>Грамоты, благодарности </span>
+                    </span>
+                    <br>
+                    <span class="wrapper">
+                        <span data-ts-delay=".2s">и дипломы</span>
+                    </span>
+                </h1>
+            </div>
+        </header>
+
+        <!--MAIN CONTENT
+        ================================================================================================================
+        ================================================================================================================
+        -->
+        <main id="ts-content" class="text-white">
+
+            <!-- GALLERY
+            ============================================================================================================
+            -->
+            <section id="awards_list" class="ts-block pb-5">
+                <div class="container">
+                    {% for album in albums %}
+                        {% cycle 'odd' 'even' as rows silent %}
+                        <!--start row-->
+                        {% if rows == 'odd' %}
+                            <div class="row ts-gallery">
+                        {% endif %}
+                    <!---->
+                    <div class="col-md-6">
+                        <div class="ts-group">
+                            <a href="{{ album.url }}" class="card ts-gallery__item mb-3">
+                                <div class="ts-background ts-img-into-bg">
+                                    <img src="{{ album.photo }}" alt="">
+                                </div>
+                            </a>
+                            <div class="ts-gallery__item-description">
+                                <h5 class="mb-0">
+                                    <a href="#">{{ album.name }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end gallery item-->
+
+                    {% if rows == 'even' or forloop.last %}
+                        <!--end row-->
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                    <!--end gallery item-->
+                </div>
+            </section>
+
+            <hr class="ts-hr-light">
+
+            <!--FOOTER
+            ================================================================================================================
+            ================================================================================================================
+            -->
+            {% block footer %}
+                {% include 'footer.html' %}
+            {% endblock footer %}
+            <!--end #footer-->
+        </main>
+    </div>
+    <!--end page-->
+{% endblock ts-content %}
