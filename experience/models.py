@@ -64,11 +64,11 @@ class Course(models.Model):
 
 class Award(models.Model):
     class Meta:
-        verbose_name = 'награда'
-        verbose_name_plural = 'награды'
+        verbose_name = 'награждение'
+        verbose_name_plural = 'награждения'
         db_table = 'awards'
 
-    name = models.CharField(max_length=50, verbose_name='Описание', null=False)
+    name = models.CharField(max_length=150, verbose_name='Описание', null=False)
     description = models.CharField(choices=AWARDS_CHOICES, max_length=50, verbose_name='Тип',
                                    default=1, null=False, blank=False)
     date = models.DateField(verbose_name='дата получения')

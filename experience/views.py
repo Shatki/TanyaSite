@@ -3,6 +3,7 @@ from django.template.context_processors import csrf
 from django.contrib import auth
 from website.views import menu
 from Tatyana.settings import MENU_DEFAULT, TEMPLATE_AWARDS
+from .models import Award
 
 
 # Create your views here.
@@ -14,6 +15,8 @@ def awards(request):
     # print(args['photo'])
     args['menus'] = menu()
     args['menu_default'] = MENU_DEFAULT
+
+    args['awards'] = Award.objects.all().order_by('date')
 
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname

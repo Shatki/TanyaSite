@@ -40,35 +40,24 @@
             -->
             <section id="gallery_list" class="ts-block pb-5">
                 <div class="container">
-                    {% for album in albums %}
-                        {% cycle 'odd' 'even' as rows silent %}
-                        <!--start row-->
-                        {% if rows == 'odd' %}
-                            <div class="row ts-gallery">
-                        {% endif %}
-                    <!---->
-                    <div class="col-md-6">
-                        <div class="ts-group">
-                            <a href="{{ album.url }}" class="card ts-gallery__item mb-3">
-                                <div class="ts-background ts-img-into-bg">
-                                    <img src="{{ album.photo }}" alt="">
+                    <div class="row ts-gallery">
+                        {% for album in albums %}
+                            <!---->
+                            <div class="col-md-6 col-lg-6">
+                                <a href="{{ album.url }}" class="card ts-gallery__item mb-3">
+                                    <div class="ts-background ts-img-into-bg">
+                                        <img src="{{ album.photo }}" alt="">
+                                    </div>
+                                </a>
+                                <div class="ts-gallery__item-description">
+                                    <h5 class="mb-0">
+                                        <a href="#">{{ album.name }}</a>
+                                    </h5>
                                 </div>
-                            </a>
-                            <div class="ts-gallery__item-description">
-                                <h5 class="mb-0">
-                                    <a href="#">{{ album.name }}</a>
-                                </h5>
+                                <!--end gallery item-->
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <!--end gallery item-->
-
-                    {% if rows == 'even' or forloop.last %}
-                        <!--end row-->
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    <!--end gallery item-->
                 </div>
             </section>
 

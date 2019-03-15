@@ -16,12 +16,12 @@
     <!--Content
     ====================================================================================================================
     -->
-    <div class="ts-content">
+    <div class="ts-content" data-bg-color="#0c0c0c">
         <!--HERO HEADER
         ================================================================================================================
         ================================================================================================================
         -->
-        <header id="ts-hero" class="ts-block">
+        <header id="ts-hero" class="ts-block text-white pb-0">
 
             <div class="container pt-2 pt-sm-5 pt-lg-0">
                 <h1 data-animate="ts-reveal">
@@ -44,56 +44,39 @@
             ============================================================================================================
             -->
             <section id="works">
-                <div class="container-fluid px-0">
+                <div class="ts-gallery row">
                     {% if not photos %}
                         <div class="container pt-2 pt-sm-5 pt-lg-0">
                             <h4>В этот альбом фотографии еще не добавлены</h4>
                         </div>
-                    {% endif %}
-
-                    {% for photo in photos %}
-                        {% cycle 'odd' 'even' as rows silent %}
-                        <!--start row-->
-                        {% if rows == 'odd' %}
-                            <div class="row no-gutters ts-gallery">
-                        {% endif %}
-
-
-                    <!---->
-                    <div class="col-md-6 col-lg-6">
-                        <a href="{{ photo.photo.url }}" class="card ts-gallery__item ts-floated-description popup-image"
-                                {% if not forloop.first %}
-                           data-delay="{{ forloop.counter|delays:'0.05' }}s"
-                                {% endif %}
-                           data-animate="ts-fadeInUp">
-                            <div class="ts-gallery__item-description">
-                                <h5>{{ photo.description }}</h5>
-                                <h3>{{ photo.name }}</h3>
+                    {% else %}
+                        {% for photo in photos %}
+                            <!---->
+                            <div class="col-md-4 col-lg-4">
+                                <a href="{{ photo.photo.url }}"
+                                   class="card ts-gallery__item ts-floated-description popup-image"
+                                        {% if not forloop.first %}
+                                   data-delay="{{ forloop.counter|delays:'0.05' }}s"
+                                        {% endif %}
+                                   data-animate="ts-fadeInUp">
+                                    <div class="ts-gallery__item-description">
+                                        <h5>{{ photo.description }}</h5>
+                                        <h3>{{ photo.name }}</h3>
+                                    </div>
+                                    <div class="ts-background ts-img-into-bg">
+                                        <img src="{{ photo.photo.url }}" alt="">
+                                    </div>
+                                </a>
                             </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{{ photo.photo.url }}" alt="">
-                            </div>
-                        </a>
-                    </div>
-
-                    <!--end gallery item-->
-                    {% if rows == 'even' or forloop.last %}
-                        <!--end row-->
-                        </div>
+                            <!--end gallery item-->
+                        {% endfor %}
                     {% endif %}
-                    {% endfor %}
-                    <!--end gallery item-->
                 </div>
             </section>
 
-            <!--Call to action
-            ============================================================================================================
-            -->
             <section class="py-5 text-center ts-background-repeat" data-bg-image={% static '/img/bg__pattern--dot.png' %}>
                 <div class="container py-5 my-5">
-
-                    <a href="#" class="btn btn-outline-dark">Вернуться к выбору альбомов</a>
-
+                    <a href="/gallery/" class="btn btn-outline-light">Вернуться к выбору альбомов</a>
                 </div>
             </section>
 

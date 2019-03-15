@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load filters %}
 
 {% block main-navigation %}
     {% include 'navigation.html' %}
@@ -35,40 +36,32 @@
         -->
         <main id="ts-content" class="text-white">
 
-            <!-- GALLERY
+            <!-- AWARDS
             ============================================================================================================
             -->
-            <section id="awards_list" class="ts-block pb-5">
+            <section id="awards_list">
                 <div class="container">
-                    {% for album in albums %}
-                        {% cycle 'odd' 'even' as rows silent %}
-                        <!--start row-->
-                        {% if rows == 'odd' %}
-                            <div class="row ts-gallery">
-                        {% endif %}
-                    <!---->
-                    <div class="col-md-6">
-                        <div class="ts-group">
-                            <a href="{{ album.url }}" class="card ts-gallery__item mb-3">
-                                <div class="ts-background ts-img-into-bg">
-                                    <img src="{{ album.photo }}" alt="">
-                                </div>
-                            </a>
-                            <div class="ts-gallery__item-description">
-                                <h5 class="mb-0">
-                                    <a href="#">{{ album.name }}</a>
-                                </h5>
+                    <div class="ts-gallery row">
+                        {% if not awards %}
+                            <div class="pt-2 pt-sm-5 pt-lg-0">
+                                <h4>Награды еще не добавлены</h4>
                             </div>
-                        </div>
+                        {% else %}
+                            {% for award in awards %}
+                                <!---->
+                                <div class="col-md-4 col-lg-4">
+                                    <a href="{{ award.photo.url }}" class="card ts-gallery__item--big ts-floated-description popup-image"
+                                            {% if not forloop.first %}
+                                       data-delay="{{ forloop.counter|delays:'0.05' }}s"
+                                            {% endif %}
+                                       data-animate="ts-fadeInUp">
+                                        <img class="img-thumbnail" src="{{ award.photo.url }}" alt="">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <!--end awards item-->
                     </div>
-                    <!--end gallery item-->
-
-                    {% if rows == 'even' or forloop.last %}
-                        <!--end row-->
-                        </div>
-                    {% endif %}
-                    {% endfor %}
-                    <!--end gallery item-->
                 </div>
             </section>
 
