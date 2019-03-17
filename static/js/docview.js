@@ -32,7 +32,7 @@
 * Here is how you use it
 */
 $(function(){
-    $('.view-pdf').on('click',function(){
+    $('.doc-view').on('click',function(){
         var pdf_link = $(this).attr('href');
         var iframe = '<div class="iframe-container"><iframe src="'+pdf_link+'"></iframe></div>';
         $.createModal({
@@ -43,4 +43,4 @@ $(function(){
         });
         return false;
     });
-})
+});

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'website',
     'gallery',
     'users',
-    'documents',
+    'pages',
     'news',
     'experience',
 ]
@@ -126,6 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+STATIC_IMAGE_DIR = 'img/'
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
 GALLERY_PHOTOS_DIR = 'gallery/'
@@ -136,8 +137,6 @@ DOCUMENTS_MINIATURES_DIR = 'miniatures/'
 
 CONTENT_PIC_DEFAULT_NAME = CONTENT_PICS_DIR + 'image.jpg'
 PROFILE_PHOTO_DEFAULT_NAME = PROFILE_PHOTOS_DIR + 'profileimage.jpg'
-NO_PHOTO = PROFILE_PHOTOS_DIR + 'nophoto.png'
-DOCUMENT_PDF_MINIATURE = DOCUMENTS_MINIATURES_DIR + 'pdf.png'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -190,15 +189,19 @@ DOCS = 'documents'
 NEWS = 'news'
 CONTACTS = 'contacts'
 GALLERY = 'gallery'
+PARENTS = 'parents'
+METHODIC = 'methodic'
 
 MENU_DEFAULT = ABOUT
 
 MENU_CHOICES = (
     (ABOUT, 'обо мне'),
+    (DOCS, 'документы'),
     (GROUP, 'группа'),
+    (PARENTS, 'для родителей'),
+    (METHODIC, 'мои разработки'),
     (NEWS, 'новости'),
     (GALLERY, 'фотогаллерея'),
-    (DOCS, 'документы'),
     (CONTACTS, 'контакты'),
 )
 
@@ -217,12 +220,50 @@ AWARDS_CHOICES = (
     (CERTIFICATE, 'сертификат'),
 )
 
+PDF = 'pdf'
+PPT = 'ppt'
+PPTX = 'pptx'
+XLS = 'xls'
+XLSX = 'xlsx'
+DOC = 'doc'
+DOCX = 'docx'
+UNKNOWN = 'unknown'
+
+DOCUMENT_TYPES = (
+    (PDF, '*.pdf файл Adobe Reader'),
+    (PPT, '*.ppt файл презентации MS PowerPoint 97/2003'),
+    (PPTX, '*.pptx файл презентации MS PowerPoint'),
+    (DOC, '*.doc текстовый файл MS Word 97/2003'),
+    (DOCX, '*.docx текстовый файл MS Word'),
+    (XLS, '*.xls файл электронных таблиц MS Excel 97/2003'),
+    (XLSX, '*.xlsx файл электронных таблиц MS Excel'),
+    (UNKNOWN, 'неизвестный тип файла'),
+)
+
+EDITOR = 'editor'
+SPECIAL = 'special'
+
+PAGE_TYPES = (
+    (SPECIAL, 'Специализированная страница без выбора типа контента'),
+    (DOCS, 'Страница с документами'),
+    (EDITOR, 'Страница с редактированием текста')
+)
+
+
+# statics
+NO_PHOTO = STATIC_IMAGE_DIR + 'nophoto.png'
+DOCUMENT_PDF_MINIATURE = STATIC_IMAGE_DIR + 'pdf.png'
+DOCUMENT_EXCEL_MINIATURE = STATIC_IMAGE_DIR + 'excel.png'
+DOCUMENT_POWERPOINT_MINIATURE = STATIC_IMAGE_DIR + 'powerpoint.png'
+DOCUMENT_WORD_MINIATURE = STATIC_IMAGE_DIR + 'word.png'
+DOCUMENT_UNKNOWN_MINIATURE = STATIC_IMAGE_DIR + 'unknown.png'
 
 
 # Виды шаблонов страниц
 TEMPLATE_PAGE_DEFAULT = 'about.html'
 TEMPLATE_DOCUMENTS = 'documents.html'
 TEMPLATE_AWARDS = 'awards.html'
+TEMPLATE_EDITOR = 'editor.html'
 TEMPLATE_NO_PAGE = '404.html'
 
 

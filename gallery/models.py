@@ -16,7 +16,7 @@ class Photo(models.Model):
     updated = models.DateTimeField(verbose_name=u'последнее обновление', auto_now=True)
     photo = models.ImageField(upload_to=GALLERY_PHOTOS_DIR, verbose_name=u'фотография', name='photo')
 
-    label = models.BooleanField(u'сделать фотографией профиля', default=False)
+    label = models.BooleanField(u'сделать профильной фотографией альбома', default=False)
 
     def save(self, *args, **kwargs):
         Photo.objects.filter(album=self.album, label=True).update(label=False)
@@ -30,6 +30,10 @@ class Photo(models.Model):
 
     def get_photo(self):
         return self.photo
+
+    def url(self):
+        # return '%s/' % self.directory  # ВРЕМЕННО
+        return self.photo.url
 
 
 class Album(models.Model):

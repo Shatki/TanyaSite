@@ -48,7 +48,19 @@
                                     <div class="card-flip">
                                         <!-- Document Front -->
                                         <div class="card front card-doc">
-                                            <img src="{{ document.preview.url }}" class="card-img-top img-fluid">
+                                            {% if document.preview %}
+                                                <img src="{{ document.preview.url }}" class="card-img-top img-fluid">
+                                            {% elif document.type == PDF %}
+                                                <img src="{% static DOCUMENT_PDF_MINIATURE %}" class="card-img-top img-fluid">
+                                            {% elif document.type == XLS or document.type == XLSX %}
+                                                <img src="{% static DOCUMENT_EXCEL_MINIATURE %}" class="card-img-top img-fluid">
+                                            {% elif document.type == DOC or document.type == DOCX %}
+                                                <img src="{% static DOCUMENT_WORD_MINIATURE %}" class="card-img-top img-fluid">
+                                            {% elif document.type == PPT or document.type == PPTX %}
+                                                <img src="{% static DOCUMENT_POWERPOINT_MINIATURE %}" class="card-img-top img-fluid">
+                                            {% else %}
+                                                <img src="{% static DOCUMENT_UNKNOWN_MINIATURE %}" class="card-img-top img-fluid">
+                                            {% endif %}
                                             <div class="card-block">
                                                 <h4 class="card-title">{{ document.title }}</h4>
                                                 <p class="card-text">{{ document.description }}</p>
@@ -60,12 +72,17 @@
                                         <!-- Document Back -->
                                         <div class="card back card-doc">
                                             <div class="card-header">
-                                                Действия над фалом PDF
+                                                Действия над фалом {{ document.type|upper }}
                                             </div>
                                             <div class="card-block">
                                                 <h4 class="card-title">{{ document.title }}</h4>
                                                 <p class="card-text">Нажмите 'Просмотр', чтобы ознакомиться с документом или 'Скачать', для загрузки файла на ваш компьютер</p>
-                                                <a href="{{ document.doc.url }}" class="btn btn-primary btn-card view-pdf">Просмотр</a>
+                                                {% if document.type == PDF %}
+                                                    <a href="{{ document.doc.url }}" class="btn btn-primary btn-card doc-view">Просмотр</a>
+                                                {% elif document.type == DOC or document.type == DOCX or document.type == XLS or document.type == XLSX or document.type == PPT or document.type == PPTX %}
+                                                    <a href="//docs.google.com/gview?url={{ document.doc.url }}&embedded=true"
+                                                       class="btn btn-primary btn-card doc-view">Просмотр</a>
+                                                {% endif %}
                                                 <a href="{{ document.doc.url }}" class="btn btn-primary btn-card download-pdf">Скачать</a>
                                             </div>
                                         </div>

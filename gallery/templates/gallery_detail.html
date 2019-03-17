@@ -29,7 +29,9 @@
                         <span>{{ album.name }}</span>
                     </span>
                 </h1>
-                <h4>{{ album.description }}</h4>
+                {% if album.description %}
+                    <h4>{{ album.description }}</h4>
+                {% endif %}
             </div>
 
         </header>
@@ -44,9 +46,9 @@
             ============================================================================================================
             -->
             <section id="works">
-                <div class="ts-gallery row">
+                <div class="ts-gallery row no-gutters">
                     {% if not photos %}
-                        <div class="container pt-2 pt-sm-5 pt-lg-0">
+                        <div class="container pt-2 pt-sm-5 pt-lg-0 text-light">
                             <h4>В этот альбом фотографии еще не добавлены</h4>
                         </div>
                     {% else %}

@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('documents', '0001_initial'),
+        ('pages', '0001_initial'),
     ]
 
     operations = [
@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='photo',
-            field=models.ImageField(blank=True, default='documents/pdf.png', upload_to='miniatures/', verbose_name='миниатюра документа'),
+            field=models.ImageField(blank=True, default='pages/pdf.png', upload_to='miniatures/', verbose_name='миниатюра документа'),
         ),
     ]

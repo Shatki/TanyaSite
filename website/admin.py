@@ -7,6 +7,7 @@ from .models import Menu, Section
 class MenuAdmin(admin.ModelAdmin):
     list_display = ('menu',
                     'name',
+                    'page',
                     'url',
                     )
 

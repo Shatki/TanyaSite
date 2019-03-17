@@ -2,7 +2,7 @@ from django.contrib import auth
 from django.shortcuts import render_to_response
 from .models import Album, Photo
 from Tatyana.settings import NO_PHOTO, MENU_DEFAULT
-from website.views import menu
+from website.views import menus
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -13,7 +13,7 @@ def gallery_list(request):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
     albums = []
@@ -21,7 +21,7 @@ def gallery_list(request):
         try:
             _photo = Photo.objects.get(album_id=_object.id, label=True)
         except:
-            _photo = NO_PHOTO
+            _photo = None
         else:
             _photo = _photo.photo.url
         album = dict(
@@ -32,6 +32,7 @@ def gallery_list(request):
         )
         albums.append(album)
     args['albums'] = albums
+    args['NO_PHOTO'] = NO_PHOTO
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
     # args['form'] = UserCreationForm()
@@ -43,7 +44,7 @@ def gallery_detail(request, directory):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
     try:

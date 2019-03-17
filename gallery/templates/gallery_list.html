@@ -46,7 +46,11 @@
                             <div class="col-md-6 col-lg-6">
                                 <a href="{{ album.url }}" class="card ts-gallery__item mb-3">
                                     <div class="ts-background ts-img-into-bg">
-                                        <img src="{{ album.photo }}" alt="">
+                                        {% if album.photo %}
+                                            <img src="{{ album.photo }}" alt="">
+                                        {% else %}
+                                            <img src="{% static NO_PHOTO %}" alt="">
+                                        {% endif %}
                                     </div>
                                 </a>
                                 <div class="ts-gallery__item-description">

@@ -24,84 +24,24 @@
         <section id="gallery">
             <div class="container-fluid px-0">
                 <div class="row no-gutters ts-gallery">
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--01.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp">
-                            <div class="ts-gallery__item-description">
-                                <h5>Photography</h5>
-                                <h3>The Moments</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--01.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--02.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp" data-delay=".1s">
-                            <div class="ts-gallery__item-description">
-                                <h5>Branding</h5>
-                                <h3>Perrier Refresh</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--02.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--03.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp" data-delay=".15s">
-                            <div class="ts-gallery__item-description">
-                                <h5>Painting</h5>
-                                <h3>Zola</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--03.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--04.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp" data-delay=".2s">
-                            <div class="ts-gallery__item-description">
-                                <h5>Industrial Design</h5>
-                                <h3>Aston Martin Reel</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--04.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--05.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp" data-delay=".25s">
-                            <div class="ts-gallery__item-description">
-                                <h5>Branding</h5>
-                                <h3>Maracana Cups</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--05.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
-                    <div class="col-md-6 col-lg-4">
-                        <a href="{% static 'themes/preus/assets/img/img__work__thumb--06.jpg' %}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp" data-delay=".3s">
-                            <div class="ts-gallery__item-description">
-                                <h5>Art</h5>
-                                <h3>Timeless Motion</h3>
-                            </div>
-                            <div class="ts-background ts-img-into-bg">
-                                <img src="{% static 'themes/preus/assets/img/img__work__thumb--06.jpg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                    <!--end gallery item-->
-
+                    {% for photo in photos %}
+                        <div class="col-md-6 col-lg-4">
+                            <a href="{{ photo.url }}" class="card ts-gallery__item ts-floated-description popup-image" data-animate="ts-fadeInUp">
+                                <div class="ts-gallery__item-description">
+                                    <h5>{{ photo.album }}</h5>
+                                    <h3>{{ photo.name }}</h3>
+                                </div>
+                                <div class="ts-background ts-img-into-bg">
+                                    {% if photo.photo %}
+                                            <img src="{{ photo.url }}" alt="">
+                                        {% else %}
+                                            <img src="{% static NO_PHOTO %}" alt="">
+                                        {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                        <!--end gallery item-->
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -289,105 +229,48 @@
         <!--Новости
         ============================================================================================================
         -->
-        <section id="news" class="ts-block pt-0">
-            <div class="container">
+        {% block news %}
+            <section id="news" class="ts-block pt-0">
+                <div class="container">
 
-                <div class="ts-title">
-                    <h2>Последние новости</h2>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-4">
-                        <div class="ts-blog-thumb">
-                            <a href="blog__detail.html" class="ts-blog-image ts-background">
-                                <div class="ts-background-image ts-img-into-bg">
-                                    <img src="{% static 'themes/preus/assets/img/img__blog__thumb--01.jpg' %}" alt="">
-                                </div>
-                            </a>
-                            <h6>02-05-2019</h6>
-                            <h4>
-                                <a href="blog__detail.html">10 best design books</a>
-                            </h4>
-                            <p>
-                                Fusce pretium dui quis est pretium lobortis. Vestibulum eu ex sed nibh condimentum
-                                tristique eu finibus lorem.
-                            </p>
-                            <footer>
-                                <a href="#" class="mr-3">
-                                    <i class="fa fa-comment"></i>
-                                    20
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-heart"></i>
-                                    46
-                                </a>
-                            </footer>
-                        </div>
+                    <div class="ts-title">
+                        <h2>Последние новости</h2>
                     </div>
-                    <!--end Blog post thumbnail-->
 
-                    <div class="col-md-4">
-                        <div class="ts-blog-thumb">
-                            <a href="blog__detail.html" class="ts-blog-image">
-                                <div class="ts-background-image ts-img-into-bg">
-                                    <img src="{% static 'themes/preus/assets/img/img__blog__thumb--02.jpg' %}" alt="">
+                    <div class="row">
+                        {% for news in news_list %}
+                            <div class="col-md-4">
+                                <div class="ts-blog-thumb">
+                                    <a href="{{ news.url  }}" class="ts-blog-image ts-background">
+                                        <div class="ts-background-image ts-img-into-bg">
+                                            <img src="{{ news.photo.url }}" alt="">
+                                        </div>
+                                    </a>
+                                    <h6>{{ news.date }}</h6>
+                                    <h4>
+                                        <a href="{{ news.url  }}">{{ news.title }}</a>
+                                    </h4>
+                                    {% autoescape off %}
+                                        {{ news.text | truncatechars_html:140 }}
+                                    {% endautoescape %}
+                                    <footer>
+                                        <a href="#" class="mr-3">
+                                            <i class="fa fa-comment"></i>
+                                            {{ news.comments }}
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa fa-heart"></i>
+                                            0
+                                        </a>
+                                    </footer>
                                 </div>
-                            </a>
-                            <h6>24-04-2019</h6>
-                            <h4>
-                                <a href="blog__detail.html">How to be more creative</a>
-                            </h4>
-                            <p>
-                                Quis est pretium lobortis. Vestibulum eu ex sed nibh condimentum tristique eu finibus
-                                lorem. Nullam sed eleifend massa.
-                            </p>
-                            <footer>
-                                <a href="#" class="mr-3">
-                                    <i class="fa fa-comment"></i>
-                                    42
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-heart"></i>
-                                    38
-                                </a>
-                            </footer>
-                        </div>
+                            </div>
+                            <!--end Blog post thumbnail-->
+                        {% endfor %}
                     </div>
-                    <!--end Blog post thumbnail-->
-
-                    <div class="col-md-4">
-                        <div class="ts-blog-thumb">
-                            <a href="blog__detail.html" class="ts-blog-image">
-                                <div class="ts-background-image ts-img-into-bg">
-                                    <img src="{% static 'themes/preus/assets/img/img__blog__thumb--03.jpg' %}" alt="">
-                                </div>
-                            </a>
-                            <h6>17-04-2019</h6>
-                            <h4>
-                                <a href="blog__detail.html">Start your day well!</a>
-                            </h4>
-                            <p>
-                                Vestibulum eu ex sed nibh condimentum tristique eu finibus lorem.  Nullam sed eleifend
-                                massa. Morbi nulla turpis
-                            </p>
-                            <footer>
-                                <a href="#" class="mr-3">
-                                    <i class="fa fa-comment"></i>
-                                    18
-                                </a>
-                                <a href="#">
-                                    <i class="fa fa-heart"></i>
-                                    51
-                                </a>
-                            </footer>
-                        </div>
-                    </div>
-                    <!--end Blog post thumbnail-->
 
                 </div>
-
-            </div>
-        </section>
+            </section>
+        {% endblock news %}
     </main>
 {% endblock main-content%}

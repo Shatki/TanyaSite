@@ -36,7 +36,7 @@ urlpatterns = [
     path('news/<news_id>/comment/', comment),
 
 
-    path('documents/<url>/', pages.documents_dispatch),
+    path('<menu>/<url>/', pages.page_dispatcher),
     path('', pages.about),
     # path('users/<username>/photo/', users.get_photo),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \

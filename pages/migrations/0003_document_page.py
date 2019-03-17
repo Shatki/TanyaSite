@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('website', '0007_auto_20190312_2248'),
-        ('documents', '0002_auto_20190312_0912'),
+        ('pages', '0002_auto_20190312_0912'),
     ]
 
     operations = [

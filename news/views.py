@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from .models import News, Comment
 from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_RANGE, MENU_DEFAULT
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from website.views import menu
+from website.views import menus
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -38,7 +38,7 @@ def news_detail(request, news_id):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
 
@@ -62,7 +62,7 @@ def news_list(request):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
     news = News.objects.all()

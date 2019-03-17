@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.db import models
-from Tatyana.settings import NEWS_PHOTOS_DIR, PROFILE_PHOTOS_DIR
+from Tatyana.settings import NEWS_PHOTOS_DIR, PROFILE_PHOTOS_DIR, NEWS
 from users.models import User
 from ckeditor.fields import RichTextField
 
@@ -29,6 +29,9 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+    def url(self):
+        return '%s/%s/' % (NEWS, self.id)
 
     def date(self):
         return '{:0>2}/{:0>2}/{:0>2}'.format(str(self.added.day), str(self.added.month), str(self.added.year))

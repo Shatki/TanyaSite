@@ -1,5 +1,6 @@
 from django.db import models
 from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, TEMPLATE_NO_PAGE
+from Tatyana.settings import PAGE_TYPES, DOCS, EDITOR, SPECIAL
 
 
 # Create your models here.
@@ -13,6 +14,8 @@ class Menu(models.Model):
     menu = models.CharField(verbose_name=u"корневое меню", default=MENU_DEFAULT,
                             max_length=20, blank=False, choices=MENU_CHOICES)
     url = models.CharField(max_length=200, verbose_name=u"гиперссылка на страницу")
+
+    page = models.CharField(verbose_name='тип страницы', default=SPECIAL, choices=PAGE_TYPES, max_length=20, blank=False)
 
     def __str__(self):
         return self.name

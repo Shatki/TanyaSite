@@ -3,12 +3,18 @@ from django.template.context_processors import csrf
 from django.contrib import auth
 from .models import Menu
 from experience.models import Course
-from documents.models import Document
-from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_AWARDS, \
-    TEMPLATE_NO_PAGE
+from news.models import News, Comment
+from gallery.models import Album, Photo
+from pages.models import Document, Editor
+from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_NO_PAGE, \
+    TEMPLATE_EDITOR
+from Tatyana.settings import DOCUMENT_PDF_MINIATURE, DOCUMENT_EXCEL_MINIATURE, DOCUMENT_POWERPOINT_MINIATURE, \
+    DOCUMENT_WORD_MINIATURE, DOCUMENT_UNKNOWN_MINIATURE, NO_PHOTO
+from Tatyana.settings import PPTX, PDF, PPT, XLS, XLSX, DOC, DOCX, UNKNOWN
+from Tatyana.settings import DOCS, EDITOR, SPECIAL
 
 
-def menu():
+def menus():
     menus = Menu.objects.all()
     _menu = []
     for menu in MENU_CHOICES:
@@ -37,11 +43,46 @@ def about(request):
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    # print(args['photo'])
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
+    args['news_list'] = []
 
+    # Данные по курсам
     args['courses'] = Course.objects.all().order_by('begin_date')
+
+    # Данные по новостям
+    for news in News.objects.all().order_by('added')[:3]:
+        collect = dict(
+            id=news.id,
+            url=news.url,
+            title=news.title,
+            added=news.added,
+            text=news.text,
+            photo=news.photo,
+            comments=0,
+        )
+        args['news_list'].append(collect)
+    comments = Comment.objects.filter(allowed=True)
+    for news in args['news_list']:
+        for comment in comments:
+            if news['id'] == comment.news.id:
+                news['comments'] = news['comments'] + 1
+
+    # Данные галлереи
+    photos = []
+    for _photo in Photo.objects.all()[:6]:    # Нужно чтоб выдавал последние
+        photo = dict(
+            id=_photo.id,
+            name=_photo.name,
+            url=_photo.url(),
+            photo=_photo,
+            album=_photo.album.name,
+        )
+        photos.append(photo)
+    args['photos'] = photos
+    args['NO_PHOTO'] = NO_PHOTO
+
+
 
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
@@ -49,24 +90,61 @@ def about(request):
     return render_to_response(TEMPLATE_PAGE_DEFAULT, args)
 
 
-def documents_dispatch(request, url):
+def documents(args, url):
+    args['documents'] = ""
+    args['DOCUMENT_PDF_MINIATURE'] = DOCUMENT_PDF_MINIATURE
+    args['DOCUMENT_EXCEL_MINIATURE'] = DOCUMENT_EXCEL_MINIATURE
+    args['DOCUMENT_WORD_MINIATURE'] = DOCUMENT_WORD_MINIATURE
+    args['DOCUMENT_POWERPOINT_MINIATURE'] = DOCUMENT_POWERPOINT_MINIATURE
+    args['DOCUMENT_UNKNOWN_MINIATURE'] = DOCUMENT_UNKNOWN_MINIATURE
+    args['PDF'] = PDF
+    args['UNKNOWN'] = UNKNOWN
+    args['PPT'] = PPT
+    args['PPTX'] = PPTX
+    args['XLS'] = XLS
+    args['XLSX'] = XLSX
+    args['DOC'] = DOC
+    args['DOCX'] = DOCX
+    template = TEMPLATE_DOCUMENTS
+    try:
+        docs = Document.objects.filter(page__url=url, allowed=True).order_by('-added')
+        args['documents'] = docs
+    except:
+        return args, TEMPLATE_NO_PAGE
+    # Вызов конструктор страниц
+    return args, template
+
+
+def editors(args, url):
+    try:
+        editor = Editor.objects.get(page__url=url, allowed=True)
+        args['page'].text = editor.text
+        args['page'].title = editor.title
+    except:
+        return args, TEMPLATE_NO_PAGE
+    return args, TEMPLATE_EDITOR
+
+
+def page_dispatcher(request, menu, url):
     args = {}
     args.update(csrf(request))
     args['username'] = auth.get_user(request).username
     args['photo'] = auth.get_user(request).photo
-    args['menus'] = menu()
+    args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
-    template = TEMPLATE_DOCUMENTS
     args['page'] = ""
-    args['documents'] = ""
-
     try:
         page = Menu.objects.get(url=url)
-        docs = Document.objects.filter(page__url=url, allowed=True).order_by('-added')
         args['page'] = page
-        args['documents'] = docs
     except:
-        template = TEMPLATE_NO_PAGE
-    # Вызов конструктор страниц
+        pass
+
+    template = TEMPLATE_NO_PAGE
+
+    if args['page'].page == DOCS:
+        args, template = documents(args, url)
+
+    if args['page'].page == EDITOR:
+        args, template = editors(args, url)
 
     return render_to_response(template, args)
