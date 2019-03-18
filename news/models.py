@@ -58,3 +58,19 @@ class Comment(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.added, self.author)
+
+
+def get_news():
+    news = News.objects.all().order_by('added')
+    # Сортировка новостей
+    news_sort = []
+    fix = None
+    for _news in news:
+        if _news.fix:
+            fix = _news
+        else:
+            news_sort.append(_news)
+    news_sort.append(fix)
+
+    news_sort.reverse()
+    return news_sort

@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from users.models import User
 from .models import Menu, Feedback
 from experience.models import Course
-from news.models import News, Comment
+from news.models import News, Comment, get_news
 from gallery.models import Album, Photo
 from pages.models import Document, Editor
 from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_NO_PAGE, \
@@ -59,10 +59,11 @@ def about(request):
     args['courses'] = Course.objects.all().order_by('begin_date')
 
     # Данные по новостям
-    for news in News.objects.all().order_by('added')[:3]:
+    for news in get_news()[:3]:
         collect = dict(
             id=news.id,
             url=news.url,
+            fix=news.fix,
             title=news.title,
             added=news.added,
             text=news.text,

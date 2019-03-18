@@ -43,6 +43,9 @@
                                 <figure class="meta">
                                     <a href="#" class="link-icon"><i class="fa fa-user"></i> {{ news.author.get_full_name }}</a>
                                     <a href="#" class="link-icon"><i class="fa fa-calendar"></i> {{ news.date }}</a>
+                                    {% if news.fix %}
+                                        <a href="#" class="link-icon"><i class="fa fa-lock"></i></a>
+                                    {% endif %}
                                 </figure>
                                 {% autoescape off %}
                                     {{ news.text | truncatechars_html:400 }}

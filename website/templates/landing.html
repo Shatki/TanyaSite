@@ -254,14 +254,12 @@
                                         {{ news.text | truncatechars_html:140 }}
                                     {% endautoescape %}
                                     <footer>
-                                        <a href="#" class="mr-3">
-                                            <i class="fa fa-comment"></i>
-                                            {{ news.comments }}
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-heart"></i>
-                                            0
-                                        </a>
+                                        <a href="#" class="mr-3"><i class="fa fa-comment"></i> {{ news.comments }}</a>
+                                        <a href="#" class="mr-3"><i class="fa fa-heart"></i> 0</a>
+                                        {% if news.fix %}
+                                            <a href="#" class="mr-3"><i class="fa fa-lock"></i></a>
+                                        {% endif %}
+
                                     </footer>
                                 </div>
                             </div>

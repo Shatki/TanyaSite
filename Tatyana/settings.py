@@ -244,11 +244,13 @@ DOCUMENT_TYPES = (
 
 EDITOR = 'editor'
 SPECIAL = 'special'
+NULL_PAGE = 'null_page'
 
 PAGE_TYPES = (
+    (NULL_PAGE, 'Страница еще не создана'),
     (SPECIAL, 'Специализированная страница без выбора типа контента'),
     (DOCS, 'Страница с документами'),
-    (EDITOR, 'Страница с редактированием текста')
+    (EDITOR, 'Страница с редактированием текста'),
 )
 
 

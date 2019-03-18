@@ -2,7 +2,7 @@ from django.contrib import auth
 from django.http import JsonResponse
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
-from .models import News, Comment
+from .models import News, Comment, get_news
 from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_RANGE, MENU_DEFAULT
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from website.views import menus
@@ -45,9 +45,11 @@ def news_detail(request, news_id):
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
-
-    news = News.objects.get(id=news_id)
-    # print(photos)
+    news = []
+    try:
+        news = News.objects.get(id=news_id)
+    except:
+        args['result'] = False
     args['news'] = news
     _comments = Comment.objects.filter(news_id=news_id, allowed=True)
     # добавка чтобы реплика была адресно
@@ -58,6 +60,7 @@ def news_detail(request, news_id):
 
     args['comments'] = _comments
     return render_to_response('news__detail.html', args)
+
 
 
 @csrf_protect
@@ -72,9 +75,8 @@ def news_list(request):
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
-    news = News.objects.all().order_by('-added')
-    print(news)
-    paginator = Paginator(news, PAGINATION_NEWS_ON_PAGE)
+
+    paginator = Paginator(get_news(), PAGINATION_NEWS_ON_PAGE)
 
     page = request.GET.get('page')
     try:

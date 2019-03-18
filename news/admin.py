@@ -7,6 +7,7 @@ from .models import News, Comment
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title',
                     'added',
+                    'fix',
                     )
 
     search_fields = ('title',)
