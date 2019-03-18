@@ -223,7 +223,17 @@ $(function() {
             submitHandler: function() {
                 $button.addClass("processing");
                 $.post(path, $form.serialize(),  function(response) {
-                    $button.addClass("done").find(".status").append(response).prop("disabled", true);
+                    let $form = $button.closest("form");
+                    if(response === true){
+                        $form.trigger("reset");
+                        $button.addClass("done").removeClass('processing').
+                        prop("disabled", true);
+                        return false;
+                    }else{
+                        // Не отправляется
+                        $button.addClass("done").
+                        prop("disabled", true);
+                    }
                 });
                 return false;
             }

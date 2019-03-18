@@ -1,12 +1,13 @@
 import os
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
+
 from .models import User
 from Tatyana.settings import STATIC_URL, PROFILE_PHOTO_DEFAULT_NAME, PROFILE_PHOTOS_DIR
 
 
 # Create your views here.
-
-
+@csrf_protect
 def get_photo(request, username):
     # Тут код отдачи фотографии
     try:
@@ -15,5 +16,5 @@ def get_photo(request, username):
     except:
         return redirect(os.path.join(PROFILE_PHOTOS_DIR, PROFILE_PHOTO_DEFAULT_NAME))
 
-    print(os.path.join(PROFILE_PHOTOS_DIR, photo))
+    # print(os.path.join(PROFILE_PHOTOS_DIR, photo))
     return redirect(os.path.join(STATIC_URL, PROFILE_PHOTOS_DIR + photo))

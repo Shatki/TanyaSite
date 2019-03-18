@@ -15,14 +15,20 @@
         ================================================================================================================
         ================================================================================================================
         -->
-        <header id="ts-hero" class="ts-block">
+        <header id="ts-hero" class="ts-block ts-has-overlay text-white">
 
             <div class="container pt-2 pt-sm-5 pt-lg-0">
                 <h1 data-animate="ts-reveal">
-                    <span class="wrapper">
+                    <span class="wrapper col-md-8 offset-md-1">
                         <span>{{ page.name }}</span>
                     </span>
                 </h1>
+            </div>
+
+            <div class="ts-background" data-bg-parallax="scroll" data-bg-parallax-speed="3">
+                <div class="ts-background-image ts-background-repeat ts-img-into-bg ts-parallax-element">
+                    <img src="{% static 'img/cell-phone-close.jpg' %}" alt="">
+                </div>
             </div>
 
         </header>

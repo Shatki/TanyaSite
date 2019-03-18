@@ -129,14 +129,16 @@ MEDIA_URL = '/media/'
 STATIC_IMAGE_DIR = 'img/'
 CONTENT_PICS_DIR = 'content/'
 PROFILE_PHOTOS_DIR = 'photos/'
+HEADER_PHOTOS_DIR = 'headers/'
 GALLERY_PHOTOS_DIR = 'gallery/'
 AWARDS_PHOTOS_DIR = 'awards/'
 NEWS_PHOTOS_DIR = 'news/'
-DOCUMENTS_PDF_DIR = 'documents/'
+DOCUMENTS_DIR = 'documents/'
 DOCUMENTS_MINIATURES_DIR = 'miniatures/'
 
 CONTENT_PIC_DEFAULT_NAME = CONTENT_PICS_DIR + 'image.jpg'
 PROFILE_PHOTO_DEFAULT_NAME = PROFILE_PHOTOS_DIR + 'profileimage.jpg'
+HEADER_PHOTO_DEFAULT_NAME = HEADER_PHOTOS_DIR + 'header.jpg'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -201,7 +203,7 @@ MENU_CHOICES = (
     (PARENTS, 'для родителей'),
     (METHODIC, 'мои разработки'),
     (NEWS, 'новости'),
-    (GALLERY, 'фотогаллерея'),
+    (GALLERY, 'фотогалерея'),
     (CONTACTS, 'контакты'),
 )
 
@@ -264,6 +266,7 @@ TEMPLATE_PAGE_DEFAULT = 'about.html'
 TEMPLATE_DOCUMENTS = 'documents.html'
 TEMPLATE_AWARDS = 'awards.html'
 TEMPLATE_EDITOR = 'editor.html'
+TEMPLATE_CONTACTS = 'contacts.html'
 TEMPLATE_NO_PAGE = '404.html'
 
 

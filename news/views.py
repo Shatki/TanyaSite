@@ -6,6 +6,7 @@ from .models import News, Comment
 from Tatyana.settings import NO_PHOTO, PAGINATION_NEWS_ON_PAGE, PAGINATION_LIST_RANGE, MENU_DEFAULT
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from website.views import menus
+from users.models import User
 
 # Create your views here.
 from django.template.context_processors import csrf
@@ -36,8 +37,11 @@ def comment(request, news_id):
 def news_detail(request, news_id):
     args = {}
     args.update(csrf(request))
-    args['username'] = auth.get_user(request).username
-    args['photo'] = auth.get_user(request).photo
+    if request.user.is_authenticated:
+        args['username'] = auth.get_user(request).username
+        args['profile'] = auth.get_user(request).photo
+
+    args['photo'] = User.objects.get(is_superuser=True).photo
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
@@ -60,12 +64,16 @@ def news_detail(request, news_id):
 def news_list(request):
     args = {}
     args.update(csrf(request))
-    args['username'] = auth.get_user(request).username
-    args['photo'] = auth.get_user(request).photo
+    if request.user.is_authenticated:
+        args['username'] = auth.get_user(request).username
+        args['profile'] = auth.get_user(request).photo
+
+    args['photo'] = User.objects.get(is_superuser=True).photo
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['result'] = True
-    news = News.objects.all()
+    news = News.objects.all().order_by('-added')
+    print(news)
     paginator = Paginator(news, PAGINATION_NEWS_ON_PAGE)
 
     page = request.GET.get('page')
@@ -93,8 +101,6 @@ def news_list(request):
         news_list.list_range = range(list_start, list_end + 1)
     else:
         news_list.list_range = range(1, paginator.num_pages + 1)
-
-
 
     args['news_list'] = news_list
     return render_to_response('news__list.html', args)

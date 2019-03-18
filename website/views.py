@@ -1,13 +1,17 @@
+from django.http import JsonResponse
 from django.shortcuts import render_to_response
 from django.template.context_processors import csrf
 from django.contrib import auth
-from .models import Menu
+from django.views.decorators.csrf import csrf_protect
+
+from users.models import User
+from .models import Menu, Feedback
 from experience.models import Course
 from news.models import News, Comment
 from gallery.models import Album, Photo
 from pages.models import Document, Editor
 from Tatyana.settings import MENU_CHOICES, MENU_DEFAULT, TEMPLATE_PAGE_DEFAULT, TEMPLATE_DOCUMENTS, TEMPLATE_NO_PAGE, \
-    TEMPLATE_EDITOR
+    TEMPLATE_EDITOR, TEMPLATE_CONTACTS
 from Tatyana.settings import DOCUMENT_PDF_MINIATURE, DOCUMENT_EXCEL_MINIATURE, DOCUMENT_POWERPOINT_MINIATURE, \
     DOCUMENT_WORD_MINIATURE, DOCUMENT_UNKNOWN_MINIATURE, NO_PHOTO
 from Tatyana.settings import PPTX, PDF, PPT, XLS, XLSX, DOC, DOCX, UNKNOWN
@@ -38,11 +42,15 @@ def menus():
 
 
 # Create your views here.
+@csrf_protect
 def about(request):
     args = {}
     args.update(csrf(request))
-    args['username'] = auth.get_user(request).username
-    args['photo'] = auth.get_user(request).photo
+    if request.user.is_authenticated:
+        args['username'] = auth.get_user(request).username
+        args['profile'] = auth.get_user(request).photo
+
+    args['photo'] = User.objects.get(is_superuser=True).photo
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
     args['news_list'] = []
@@ -70,7 +78,7 @@ def about(request):
 
     # Данные галлереи
     photos = []
-    for _photo in Photo.objects.all()[:6]:    # Нужно чтоб выдавал последние
+    for _photo in Photo.objects.all().order_by('-added')[:6]:  # Нужно чтоб выдавал последние
         photo = dict(
             id=_photo.id,
             name=_photo.name,
@@ -81,8 +89,6 @@ def about(request):
         photos.append(photo)
     args['photos'] = photos
     args['NO_PHOTO'] = NO_PHOTO
-
-
 
     # if request.user.is_authenticated():
     #    args['nickname'] = auth.get_user(request).nickname
@@ -120,18 +126,26 @@ def editors(args, url):
         editor = Editor.objects.get(page__url=url, allowed=True)
         args['page'].text = editor.text
         args['page'].title = editor.title
+        args['page'].header = editor.header.url
     except:
         return args, TEMPLATE_NO_PAGE
     return args, TEMPLATE_EDITOR
 
 
+@csrf_protect
 def page_dispatcher(request, menu, url):
     args = {}
     args.update(csrf(request))
-    args['username'] = auth.get_user(request).username
-    args['photo'] = auth.get_user(request).photo
+    if request.user.is_authenticated:
+        args['username'] = auth.get_user(request).username
+        args['profile'] = auth.get_user(request).photo
+
+    args['photo'] = User.objects.get(is_superuser=True).photo
+    # общее меню
     args['menus'] = menus()
     args['menu_default'] = MENU_DEFAULT
+    # переход с меню
+    args['menu'] = menu
     args['page'] = ""
     try:
         page = Menu.objects.get(url=url)
@@ -148,3 +162,29 @@ def page_dispatcher(request, menu, url):
         args, template = editors(args, url)
 
     return render_to_response(template, args)
+
+@csrf_protect
+def contacts(request):
+    args = {}
+    args.update(csrf(request))
+    if request.user.is_authenticated:
+        args['username'] = auth.get_user(request).username
+        args['profile'] = auth.get_user(request).photo
+
+    args['photo'] = User.objects.get(is_superuser=True).photo
+    # общее меню
+    args['menus'] = menus()
+
+    return render_to_response(TEMPLATE_CONTACTS, args)
+
+
+@csrf_protect
+def feedback(request):
+    message = Feedback.objects.create(
+        name=request.POST['name'],
+        email=request.POST['email'],
+        subject=request.POST['subject'],
+        message=request.POST['message'],
+    )
+    message.save()
+    return JsonResponse(True, safe=False)

@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
-from Tatyana.settings import DOCUMENTS_PDF_DIR, DOCUMENTS_MINIATURES_DIR, DOCUMENT_TYPES
+from Tatyana.settings import DOCUMENTS_DIR, DOCUMENTS_MINIATURES_DIR, DOCUMENT_TYPES
+from Tatyana.settings import HEADER_PHOTOS_DIR, HEADER_PHOTO_DEFAULT_NAME
 from Tatyana.settings import PPTX, PDF, PPT, XLS, XLSX, DOC, DOCX, UNKNOWN
 from website.models import Menu
 from ckeditor.fields import RichTextField
@@ -21,7 +22,7 @@ class Document(models.Model):
     added = models.DateTimeField(verbose_name=u'время добавления', auto_now_add=True)
     author = models.ForeignKey(User, verbose_name=u'Кто добавил/автор документа', on_delete=models.CASCADE)
 
-    doc = models.FileField(upload_to=DOCUMENTS_PDF_DIR, verbose_name=u'документ')
+    doc = models.FileField(upload_to=DOCUMENTS_DIR, verbose_name=u'документ')
 
     preview = models.ImageField(upload_to=DOCUMENTS_MINIATURES_DIR, verbose_name=u'миниатюра документа',
                                 blank=True, default=None)
@@ -43,7 +44,7 @@ class Document(models.Model):
             self.type = DOC
         elif self.doc.url[-3:].lower() == XLS:
             self.type = XLS
-        elif self.doc.url[-4:] == PPTX:
+        elif self.doc.url[-4:].lower() == PPTX:
             self.type = PPTX
         elif self.doc.url[-4:].lower() == DOCX:
             self.type = DOCX
@@ -74,6 +75,8 @@ class Editor(models.Model):
     page = models.ForeignKey(Menu, verbose_name=u'размещение документа',
                              on_delete=models.CASCADE, blank=False, null=False)
     allowed = models.BooleanField(verbose_name=u'разрешение на публикацию', default=False)
+
+    header = models.FileField(upload_to=HEADER_PHOTOS_DIR, verbose_name=u'фотография в шапке страницы', null=True)
 
     def __str__(self):
         return '%s %s' % (self.title, self.description)

@@ -42,3 +42,19 @@ class Section(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Feedback(models.Model):
+    class Meta:
+        verbose_name = "сообщение с формы обратной связи"
+        verbose_name_plural = 'сообщения с формы обратной связи'
+        db_table = 'feedbacks'
+
+    name = models.CharField(verbose_name=u'имя', max_length=100)
+    email = models.CharField(verbose_name=u'email', max_length=50)
+    subject = models.CharField(verbose_name=u'тема сообщения', max_length=100)
+    message = models.CharField(verbose_name=u'текст сообщения', max_length=400)
+    date = models.DateTimeField(verbose_name=u'время отправки', auto_now_add=True)
+
+    def __str__(self):
+        return "Автор:%s, тема сообщения:%s" % (self.name, self.subject)

@@ -27,6 +27,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', pages.about),
+    path('contacts/', pages.contacts),
+    path('contacts/feedback/', pages.feedback),
     path('about/awards/', awards),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('gallery/', gallery_list),

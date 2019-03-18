@@ -1,0 +1,180 @@
+{% extends 'index.html' %}
+
+{% block main-navigation %}
+    {% include 'navigation.html' %}
+{% endblock main-navigation %}
+
+{%  load staticfiles %}
+
+
+{% block ts-content %}
+    <!--Content
+    ====================================================================================================================
+    -->
+    <div class="ts-content">
+        <!--HERO HEADER
+        ================================================================================================================
+        ================================================================================================================
+        -->
+        {% block header %}
+            <header id="ts-hero" class="ts-block">
+                <div class="container pt-2 pt-sm-5 pt-lg-0">
+                    <h1 class="ts-text-underline">Контактные данные</h1>
+                </div>
+            </header>
+        {% endblock header %}
+
+        <!--MAIN CONTENT
+        ================================================================================================================
+        ================================================================================================================
+        -->
+        {% block main-content %}
+            <main id="ts-content">
+                <!--Map
+                ============================================================================================================
+                -->
+                {% block map %}
+                    <section id="map">
+                        <div class="map ts-height--50vh" id="map-contact">
+                            <script type="text/javascript" charset="utf-8"
+                                    async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa3b876177eb0c62dfcd6217c33227f190c8bff0462282b13e95dcd0023f0a44a&amp;width=100%25&amp;height=632&amp;lang=ru_RU&amp;scroll=true">
+                            </script>
+                        </div>
+                    </section>
+                {% endblock map %}
+
+                <!--Contact Info
+                ============================================================================================================
+                -->
+                {% block contact-info %}
+                    <section id="cotact-info" class="ts-block">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="row">
+
+                                        <div class="col-sm-6 col-md-12">
+                                            <section class="mb-5">
+                                                <div class="ts-title mb-5">
+                                                    <h2>Место работы</h2>
+                                                </div>
+                                                <address>
+                                                    607710 Нижегородская обл,
+                                                    <br>
+                                                    Шатковский район,
+                                                    <br>
+                                                    пос. Лесогорск, ул. Советская, д. 2
+                                                    <br>
+                                                    <br>
+                                                    <strong>Тел:</strong> (83190)4-61-20
+                                                    <br>
+                                                    <strong>Email:</strong> <a href="#">lesogorsk-mdou@mail.ru</a>
+                                                    <br>
+                                                    <strong>WWW:</strong> <a href="#">lesogorsk-mdou.ru</a>
+                                                    <br>
+                                                </address>
+                                            </section>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-12">
+                                            <section>
+                                                <div class="ts-title mb-5">
+                                                    <h2>Соц.сети</h2>
+                                                </div>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="fab fa-facebook-square mr-2"></i>
+                                                            Facebook
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="fab fa-twitter-square mr-2"></i>
+                                                            Twitter
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <i class="fab fa-youtube-square mr-2"></i>
+                                                            Youtube
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </section>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="ts-title mb-5">
+                                        <h2>Напишите мне</h2>
+                                    </div>
+                                    <form id="form-contact" method="post" class="clearfix ts-form ts-form-email" data-path="feedback/">
+                                        {%  csrf_token %}
+                                        <!--Row-->
+                                        <div class="row">
+
+                                            <!--Name-->
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="form-contact-name">Имя *</label>
+                                                    <input type="text" class="form-control" id="form-contact-name" name="name" placeholder="Ваше имя" required>
+                                                </div>
+                                            </div>
+
+                                            <!--Email-->
+                                            <div class="col-md-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="form-contact-email">Email *</label>
+                                                    <input type="email" class="form-control" id="form-contact-email" name="email" placeholder="Ваш e-mail" required>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--end row -->
+
+                                        <!--Subject-->
+                                        <div class="form-group">
+                                            <label for="form-contact-subject">Тема *</label>
+                                            <input type="text" class="form-control" id="form-contact-subject" name="subject" placeholder="Тема" required>
+                                        </div>
+
+                                        <!--Message-->
+                                        <div class="form-group">
+                                            <label for="form-contact-message">Сообщение *</label>
+                                            <textarea class="form-control" id="form-contact-message" rows="5" name="message" placeholder="Ваше сообщение" required></textarea>
+                                        </div>
+
+                                        <!--Submit button-->
+                                        <div class="form-group clearfix">
+                                            <button type="submit" class="btn btn-primary float-right" id="form-contact-submit">Отправить</button>
+                                        </div>
+
+                                        <div class="form-contact-status"></div>
+
+                                    </form>
+                                    <!--end form-contact -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                {% endblock contact-info %}
+            </main>
+            <!--end #content-->
+        {% endblock main-content %}
+
+
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock footer %}
+
+    </div>
+    <!--end page-->
+
+
+{% endblock ts-content %}
+
